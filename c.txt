@@ -1,1 +1,7 @@
+C PROGRAMMING
+---------------
 
+BASIC COMPILER : GCC (GNU Compiler Collection)
+
+check g++ : terminal >> g++ --version
+check gcc : terminal >> gcc --version
