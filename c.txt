@@ -1,9 +1,197 @@
 C PROGRAMMING
 ---------------
 
-BASIC COMPILER : GCC (GNU Compiler Collection)
+1. BASIC COMPILER : GCC (GNU Compiler Collection)
+    check g++ : terminal >> g++ --version
+    check gcc : terminal >> gcc --version
 
-check g++ : terminal >> g++ --version
-check gcc : terminal >> gcc --version
+2. INSTALLING IN WINDOWS
+-------------------------
+    install the mingw-w6 for windows : http://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win32/Personal%20Builds/mingw-builds/installer/mingw-w64-install.exe/download
 
-install the mingw-w6 for windows : http://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win32/Personal%20Builds/mingw-builds/installer/mingw-w64-install.exe/download
+3. INTRODUCTION
+----------------
+    Developed by : Dennis Ritchie (for unnix OS)
+    Date : 1972
+    General Purpose : Operating System, Embedded System,Database ,Compilers, Drivers..etc
+
+3. KEYWORDS (predefined & reserved words in C programing)
+----------------------------------------------------------
+    total : 32
+    :
+    auto     double   int     struct
+    break    else     long     switch
+    case     enum     register typedef
+    char     extern   return   union
+    const    float    short    unsigned
+    continue for      signed   void
+    default  goto     sizeof   volatile
+    do       if       static   while
+
+4. IDENTIFIERS 
+---------------
+    User defined names given to Variables,Functions,Arrays,Structures..etc
+    NAMING RULES
+    ------------
+        • identifier can only have alphanumeric characters (a-z,A-Z,0-9) and underscore symbol
+        • must be unique
+        • first charector must be alphabet or underscore
+        • cannot use a keyword
+        • cannot contain whitespace
+        • case-sensitive
+
+5. WORKING
+----------
+    COMPILATION PROCESS
+    --------------------
+    1. Pre-processing (mannually inserting the contents in #include..etc)
+    2. Compiling (converts the expanded code into assembly code) (extension .s,.asm)
+    3. Assembling (converting assembly code into machine code) (extension .o,.obj)
+    4. Linking (converts the machine code into executable)
+
+    source code -> machine readable -> executable
+
+6. BASIC STRUCTURE
+-------------------
+      //pre processor commands (header files)
+      #include <stdio.h>  // standard input/output <-- contains functions like printf,scanf..etc
+      #include <stdlib.h> //standard library <-- contains standard functions and function releated
+      
+      //main function (starting function)
+      int main(){
+          return 0;
+          //codes after return wont run
+      }
+
+7. HELLO WORLD
+---------------
+    #include <stdio.h> 
+    
+    int main(){
+        printf("HELLO WORLD");
+        return 0;
+    }
+
+8. PLACEHOLDER
+---------------
+    using number,float,char on input/output
+    %s - string
+    %c - char
+    %d - integer (decimal number)
+    %f - float
+
+    EG:-
+        #include <stdio.h>
+    
+        int main(){
+            printf("The number is : %d \n",200);
+            printf("The word is : %s \n", "HELLO WORLD");
+            printf("The float value is : %f \n",3.141);
+            printf("The char value is : %c \n",'X');
+            return 0;
+        }
+
+    OUT:-
+          The number is : 200 
+          The word is : HELLO WORLD 
+          The float value is : 3.141000 
+          The char value is : X
+
+9. VARIABLE AND DATA TYPES
+---------------------------
+    BASIC DATATYPES
+    -----------------
+    int     : integer (whole numbers)
+    char    : character type 
+    float   : decimal numbers
+    double  : larger decimal numbers
+    void    : abscence of data type or return value
+
+    MODIFIERS FOR DATA TYPE
+    -------------------------
+    short     : short integers (-32768-32767)
+    long      : long integer
+    long long : large range of values
+    unsigned  : holds positive values (no negative numbers) (0-65535)
+
+
+  EG :-
+
+    #include <stdio.h>
+    
+    int main(){
+        char name[] = "John";
+        int age = 20;
+        float height=5.9;
+        char grade ='A';
+    
+        printf("My name is %s \n",name);
+        printf("I am %d years old \n");
+        printf("My height is %f \n",height);
+        printf("i have %c grade \n",grade);
+    
+        return 0;
+    }
+
+  OUT:-
+      My name is John 
+      I am -1760669024 years old 
+      My height is 5.900000 
+      i have A grade 
+
+10. INPUT (scanf)
+-----------------
+  used to read the input data
+  #include <stdio.h>
+
+  EG:-
+
+      int main(){
+          char name[13]; // <-- 13 is the max length of the string
+          int age;
+          float height;
+          char grade;
+      
+          printf("Enter your name:\n");
+          scanf("%s", name);
+      
+          printf("Enter your age:\n");
+          scanf("%d", &age); // <- & (ampersand) required for non-string values
+      
+          printf("Enter your height:\n");
+          scanf("%f", &height);
+      
+          printf("Enter your grade:\n");
+          scanf(" %c", &grade);  // Space before %c to ignore any leftover newline character
+      
+          printf("My name is %s\n", name);
+          printf("I am %d years old\n", age); 
+          printf("My height is %f\n", height); 
+          printf("I have %c grade\n", grade); 
+      
+          return 0;
+      }
+
+  INPUT:-
+
+        Enter your name:
+        john
+        Enter your age:
+        25
+        Enter your height:
+        5.9
+        Enter your grade:
+        A
+
+
+  OUT:-
+
+        My name is john
+        I am 25 years old
+        My height is 5.900000
+        I have A grade
+
+  
+  
+  
+      
