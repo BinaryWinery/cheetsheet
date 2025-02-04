@@ -191,6 +191,44 @@ C PROGRAMMING
         My height is 5.900000
         I have A grade
 
+11. ARITHMETIC OPERATORS
+-------------------------
+    
+    + : Addition
+    - : Substraction
+    / : Division
+    * : Multiply
+
+12. SIMPLE CALCULATOR (sum)
+----------------------------
+    EG:-
+            #include <stdio.h>
+        
+            int main(){
+                int number1,number2;
+            
+                printf("First number : \n");
+                scanf("%d",&number1);
+            
+            
+                printf("Select second number : \n");
+                scanf("%d",&number2);
+            
+                printf("%d + %d = %d",number1,number2,number1+number2);
+                
+                return 0;
+            }
+
+    INPUT :-
+
+            First number : 
+            3
+            Select second number : 
+            4
+
+    OUT:-
+            3 + 4 = 7
+
   
   
   
