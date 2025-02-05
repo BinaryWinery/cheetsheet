@@ -232,7 +232,10 @@ C PROGRAMMING
 13. IF ELSE STATEMENT
 ----------------------
 
-    EG:-
+    
+    EG:- (FIND POSITIVE OR NEGATIVE NUMBER)
+    ---------------------------------------
+
             #include <stdio.h>
             
             int main(){
@@ -258,6 +261,35 @@ C PROGRAMMING
             -9000
     OUTPUT:-
             -9000 is Negative number
+
+
+    EG:- (FIND ODD OR EVEN)
+    -----------------------
+
+            #include <stdio.h>
+        
+            int main(){
+            
+                int number;
+            
+                printf("Enter a number : \n");
+                scanf("%d",&number);
+            
+                if(number % 2 ==0){
+                    printf("%d is an Even number",number);
+                }
+                else {
+                    printf("%d is a Odd number",number);
+                }
+            }
+
+    INPUT:-
+        Enter a number : 
+        4
+
+    OUT:-
+        3 is a Odd number
+
 
 14. ADVANCED CALCULATOR (sum,substract,multiply,devide)
 -------------------------------------------------------
@@ -308,6 +340,108 @@ C PROGRAMMING
    OUTPUT:-
 
         100 - 60 = 40
+
+15. FOR LOOP
+-------------
+    PRINTING NUMBERS 0-10
+    ----------------------
+    EG:-
+        #include <stdio.h>
+        
+        int main(){
+        
+            //order : initialization, condition, updation
+            for(int i=0;i<=10;i++){
+                printf("%d \n",i);
+            }
+        
+            return 0;
+        }
+
+    OUT:-
+
+        0 
+        1 
+        2 
+        3 
+        4 
+        5 
+        6 
+        7 
+        8 
+        9 
+        10
+
+16. WHILE LOOP
+--------------
+    EG:-
+
+        #include <stdio.h>
+        
+        int main(){
+        
+            int n=0; //initialization
+        
+            while(n<=10){ //<-condition
+                printf("%d \n",n);
+                n++; // <- updation
+            }
+        
+            return 0;
+        }
+
+
+    OUT:-
+
+        0 
+        1 
+        2 
+        3 
+        4 
+        5 
+        6 
+        7 
+        8 
+        9 
+        10 
+
+17. DO WHILE LOOP
+-----------------
+        EG:-
+
+                #include <stdio.h>
+            
+                int main(){
+                
+                    int number=0;
+                    do{
+                        printf("%d\n",number);
+                        number++;
+                    }
+                    while(number<=10);
+                
+                    return 0;
+                }
+
+        OUTPUT:-
+
+                0
+                1
+                2
+                3
+                4
+                5
+                6
+                7
+                8
+                9
+                10
+
+    
+
+
+
+
 
 
 
