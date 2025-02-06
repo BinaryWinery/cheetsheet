@@ -437,6 +437,205 @@ C PROGRAMMING
                 9
                 10
 
+18. ARRAYS
+-------------
+    SIMPLE ARRAY
+    ------------
+    EG:-
+        int array1[5]={1,2,3,4,5};
+
+    ACCESSING ELEMENTS
+    ------------------
+    EG:-
+        int array1[5]={1,2,3,4,5};
+        int indexNumber = 3;
+        printf("%d",array1[indexNumber]);
+
+
+19. FUNCTIONS
+-------------
+
+        SIMPLE FUNCTIONS
+        -----------------
+
+        #include <stdio.h>
+        
+        void function1(){
+            printf("I returns nothing\n");
+        }
+        
+        int function2(){
+            return 25;
+        }
+        
+        char* function3(){
+            return "secret";
+        }
+        
+        int main(){
+            function1();
+            int funtion2_value = function2();
+            printf("The value of function2 : %d\n",funtion2_value);
+            char* function3_value = function3();
+            printf("The value of function3 : %s\n",function3_value);
+            return 0;
+        }
+
+
+        ARGUMENTS AND PARAMETERS
+        ------------------------
+
+            #include <stdio.h>
+        
+        
+            void say_hello(char name[]){ // <-parameters
+                printf("Hello %s",name);
+            }
+            
+            
+            int main(){
+                say_hello("John"); // <-argument
+                return 0;
+            }
+
+20. Strings
+------------
+        PUTS AND FGETS
+        ----------------
+        puts - like printf (for string)
+        fgets - like scanf (for string)
+
+            EG:-
+                #include <stdio.h>
+                #include <stdlib.h>
+                
+                
+                
+                int main(){
+                    char name[10]; // <--max 10 charectors
+                    puts("Enter your name : ");
+                    fgets(name,sizeof(name),stdin);
+                    puts(name);
+                    return 0;
+                }
+    
+            INPUT:-
+                 Enter your name : 
+                 john   
+    
+            OUTPUT:-
+                 john
+
+        STRING LENGTH
+        --------------
+        EG:-
+            #include <stdio.h>
+            #include <stdlib.h>
+            #include <string.h>
+            
+            
+            int main(){
+                char name[20];
+                puts("Enter your name : ");
+                fgets(name,sizeof(name),stdin);
+                int name_length = strlen(name);
+                printf(" the length of word %s ,is %d",name,name_length);
+                return 0;
+            }
+
+        INPUT:-
+            
+            Enter your name : 
+            john
+
+        OUTPUT:-
+            the length of word john,is 5
+
+
+    CONCAT STRING (joining 2 strings) - strcat
+    -----------------------------------------
+
+    EG:-
+        #include <stdio.h>
+        #include <stdlib.h>
+        #include <string.h>
+        
+        
+        
+        int main(){
+            char string1[20] = "HELLO";
+            char string2[10] = "WORLD";
+        
+            strcat(string1,string2);
+            printf("%s",string1);
+            return 0;
+        }
+
+    OUT:-
+        HELLOWORLD    
+
+    COPY STRING (copy value of another string to a variable) -strcpy
+    ----------------------------------------------------------------
+
+    EG:-
+            #include <stdio.h>
+            #include <stdlib.h>
+            #include <string.h>
+            
+            
+            
+            int main(){
+                char string1[20] = "HELLO";
+                char string2[10] = "WORLD";
+            
+                strcpy(string1,string2);
+                printf("%s",string1);
+                return 0;
+            }
+
+    OUT:-
+        WORLD
+
+
+    COMPARE STRINGS (compares two strings) - strcmp
+    -----------------------------------------------
+    EG:-
+        #include <stdio.h>
+        #include <stdlib.h>
+        #include <string.h>
+        
+        
+        
+        int main(){
+            char string1[20] = "Apple";
+            char string2[10] = "orange";
+            char string3[10] = "Apple";
+        
+            printf("%d\n",strcmp(string1,string2)); // <-returns negative value if not matching
+            printf("%d\n",strcmp(string1,string3)); // <- returns zero if matching
+            return 0;
+        }
+
+    OUT:-
+        -46
+         0
+
+21. POINTERS
+-------------
+
+
+
+
+            
+
+
+            
+                
+
+        
+
+
+
     
 
 
