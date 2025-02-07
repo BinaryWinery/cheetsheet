@@ -620,8 +620,183 @@ C PROGRAMMING
         -46
          0
 
-21. POINTERS
--------------
+21. POINTERS (used to store memmory address of other variables)
+----------------------------------------------------------------
+        MEMMORY ADDRESS
+        ------------------
+        Format : HEXADECIMAL
+
+        Find memmory address of a variable
+        -----------------------------------
+        EG:-
+            #include <stdio.h>
+    
+            int main(){
+                int value = 20;
+                printf("The memmory address is %x",&value);
+                return 0;
+            }
+
+        OUTPUT:-
+            The memmory address is 25467cc
+
+
+        Storing memmmory address to a variable (pointer)
+        ------------------------------------------------
+
+        EG:-
+
+            #include <stdio.h>
+            
+            int main(){
+                int value = 20;
+                int *pointer = &value;
+                printf("The stored memmory address : %x\n",pointer);
+                printf("The pointer address : %p\n",pointer);
+                printf("The value in pointer : %d"\n,*pointer);
+                return 0;
+            }
+
+
+        OUT:-
+            The stored memmory address : 0x7ffc5e6cdd84
+            The pointer address : 0x7ffd66623e94
+            The value in pointer : 20
+
+
+22. STRUCTURES (similar to object)
+------------------------------------------------
+        EG:-
+            #include <stdio.h>
+            #include <string.h>
+            
+            struct Students{
+                char name[20];
+                int age;
+                float height;
+            };
+            
+            int main(){
+            
+                struct Students student1;
+                strcpy(student1.name,"JOHN");
+                student1.age =20;
+                student1.height = 190.0;
+            
+                printf(" NAME : %s \n AGE : %d \n HEIGHT : %f",student1.name,student1.age,student1.height);
+                return 0;
+            }
+
+        OUT:-
+
+            NAME : JOHN 
+            AGE : 20 
+            HEIGHT : 190.000000
+
+
+23. FILE HANDLING
+------------------
+        CREATE FILE -fopen
+        -------------------
+
+        EG:-
+            #include <stdio.h>
+            int main(){
+                FILE *fp;
+                fp = fopen("sample.txt","w"); // <-replace sample.txt with full path and filename
+                fclose(fp);
+                return 0;
+            }
+
+        WRITE CONTENT TO FILE -fprintf 
+        ------------------------------
+            Overrite Content ("w")
+            ------------------------
+            EG:-
+                #include <stdio.h>
+                int main(){
+                    FILE *fp;
+                    fp = fopen("sample.txt","w"); // <- replace sample.txt with full path and filename, "w" -> write
+                    fprintf(fp,"Hello world"); // <--replace content
+                    fclose(fp);
+                    return 0;
+                }
+    
+            Append Content ("a")
+            ---------------------
+    
+            EG:-
+                #include <stdio.h>
+                int main(){
+                    FILE *fp;
+                    fp = fopen("sample.txt","a"); // <- replace sample.txt with full path and filename ,"a" -> append
+                    fprintf(fp," my name is john"); // <--replace content
+                    fclose(fp);
+                    return 0;
+                }
+
+        READ CONTENTS OF FILE  -fscanf
+        ------------------------------
+            EG:-
+                #include <stdio.h>
+                int main(){
+                    char data[120];
+                    FILE *fp;
+                    fp = fopen("sample.txt","r"); // <- replace sample.txt with full path and filename ,"r" -> read
+                    while(fscanf(fp,"%s",data)!=EOF){ EOF - end of file (loop works until the file ends)
+                        printf("%s ",data);
+                    }
+                    return 0;
+                }
+
+            OUTPUT:-
+                    abcdefghijklmnopqrstuvwxyz
+
+        REMOVE FILE
+        -----------
+        Remove a file
+        --------------
+            EG:-
+                #include <stdio.h>
+                int main(){
+                    const char *filename = "secret.txt";
+                    remove(filename);
+                    return 0;
+                }
+
+
+        Safely delete file with error handling
+        --------------------------------------
+            EG:-
+                #include <stdio.h>
+                int main(){
+                    FILE *fp;
+                    const char *filename = "sample.txt";
+                    fp = fopen(filename,"r");
+                    if(fp!=NULL){
+                        fclose(fp);
+                        if(remove(filename) ==0){
+                            printf("removed successfully");
+                        }
+                        else{
+                            printf("File cannot be removed");
+                        }
+                    }
+                    else{
+                        printf("the file doesnt exist");
+                    }
+                    return 0;
+                }
+
+
+        
+
+
+
+
+
+
+
 
 
 
