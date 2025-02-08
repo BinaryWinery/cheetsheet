@@ -620,6 +620,30 @@ C PROGRAMMING
         -46
          0
 
+
+    CHECK IF STRING INCLUDES A VALUE
+    --------------------------------
+    EG:-
+        #include <stdio.h>
+        #include <string.h>
+        
+        
+        int main(){
+            char text[] = "my name is apple";
+            char word[]="apple";
+        
+            if(strstr(text,word)){
+                printf("The text contains apple");
+            }else{
+                printf("The text doesnt contains apple");
+            }
+        
+            return 0;
+        }
+
+    OUTPUT:-
+        The text contains apple
+
 21. POINTERS (used to store memmory address of other variables)
 ----------------------------------------------------------------
         MEMMORY ADDRESS
