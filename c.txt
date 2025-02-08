@@ -812,7 +812,42 @@ C PROGRAMMING
                     return 0;
                 }
 
-24. HEAP ALLOCATION AND STACK ALLOCATION
+24. REGEX
+----------
+        CHECK IF TEXT HAVE NUMBER IN IT
+        -------------------------------
+            EG:-
+                #include <stdio.h>
+                #include <regex.h>
+                
+                int checkRegex(char pattern[],char text[]){
+                    regex_t regex;
+                    int result;
+                
+                    if (regcomp(&regex, pattern, REG_EXTENDED)) {
+                        printf("Could not compile regex\n");
+                        return -1;
+                    }
+                    result = regexec(&regex,text,0,NULL,0);
+                    regfree(&regex);
+                    return result;
+                }
+                
+                int main(){
+                    char text[] = "my number is 98 ";
+                    char pattern[] = "[0-9]";
+                
+                    if(checkRegex(pattern,text) == 0){
+                        printf("The text contains number");
+                    }
+                    else{printf("The text doesnt contains number")
+                    ;}
+                }
+
+            OUTPUT:-
+                The text contains number
+
+25. HEAP ALLOCATION AND STACK ALLOCATION
 -----------------------------------------
     HEAP ALLOCATION
     ----------------
