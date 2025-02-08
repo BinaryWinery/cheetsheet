@@ -788,6 +788,27 @@ C PROGRAMMING
                     return 0;
                 }
 
+24. HEAP ALLOCATION AND STACK ALLOCATION
+-----------------------------------------
+    HEAP ALLOCATION
+    ----------------
+        • can change the size at runtime
+        • Memmory allocated at runtime (dynamic)
+        • use malloc(),calloc(),realloc() and free ( from stdlib.h library )
+        • Memmory remains  allocated until mannually freed with free()
+        • slower but flexible
+        • stored in heap section of RAM
+
+    STACK ALLOCATION
+    ----------------
+        • cannot change the size 
+        • memmory allocated at compile time (static)
+        • uses normal variable declaration (int array[20])
+        • Memmory is automatically freed when the function exits
+        • faster but fixed
+        • stored in stack section of RAM
+    
+
 
         
 
