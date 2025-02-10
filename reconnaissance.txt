@@ -5,6 +5,10 @@ GOOGLE DORKING
     filetype:[filetype]    : show result where the file result contain specific file (pdf,doc,xls..etc)
     intext:[content]       : show result where the body of the result contains specific content
     intitle:[content]      : show result where the title of the result contains specific content
+    before:[yyyy-mm-d]     : show result before the specified date
+    after:[yyyy-mm-d]      : show result after the specified date
+
+    related:[website]      : show result which is related to the website specified (like related:amazon.com, will return sites similar to amazon.com , eg: ebay,wallmart...etc)
 
     DORKING OPERATORS
     ------------------
