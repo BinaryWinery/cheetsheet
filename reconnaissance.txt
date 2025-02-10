@@ -1,3 +1,20 @@
+GOOGLE DORKING
+----------------
+    site:[website domain]  : show results where url is the specified website domain
+    inurl:[content]        : show results which have the content in the url
+    filetype:[filetype]    : show result where the file result contain specific file (pdf,doc,xls..etc)
+    intext:[content]       : show result where the body of the result contains specific content
+    intitle:[content]      : show result where the title of the result contains specific content
+
+    DORKING OPERATORS
+    ------------------
+    OR   :  eg:- site:google.com OR site:amazon.com (the result will be either from google.com or amazon.com)
+    AND  :  eg:- site:google.com AND filetype:pdf   (the result will be both from google.com and file type that is pdf)
+
+    OPERATORS COMBINATION
+    ---------------------
+    (site:facebook.com | site:twitter.com) & filetype:"pdf" :  (the result will be from "facebook.com" or "twitter.com" which have "pdf" filetype)
+
 WHATWEB
 --------
   installations : apt install whatweb
