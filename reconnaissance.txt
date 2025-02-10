@@ -1,5 +1,5 @@
-GOOGLE DORKING
-----------------
+1.GOOGLE DORKING
+------------------
     site:[website domain]  : show results where url is the specified website domain
     inurl:[content]        : show results which have the content in the url
     filetype:[filetype]    : show result where the file result contain specific file (pdf,doc,xls..etc)
@@ -19,8 +19,8 @@ GOOGLE DORKING
     ---------------------
     (site:facebook.com | site:twitter.com) & filetype:"pdf" :  (the result will be from "facebook.com" or "twitter.com" which have "pdf" filetype)
 
-WHATWEB
---------
+2.WHATWEB
+----------
   installations : apt install whatweb
   usage :
     whatweb [subnet] // subnet scan
