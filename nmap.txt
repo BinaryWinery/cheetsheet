@@ -41,25 +41,35 @@ closed/filtered : Port might be closed or filtered, but Nmap lacks enough inform
           nmap [ᴛᴀʀɢᴇᴛ1] [ᴛᴀʀɢᴇᴛ2] [ᴛᴀʀɢᴇᴛ3] 
 
     • (𝘀𝘂𝗯𝗻𝗲𝘁 𝘀𝗰𝗮𝗻)
-        nmap -sn [target]/[cidr] : eg:nmap 192.168.1.0/24
+          nmap -sn [target]/[cidr] : eg:nmap 192.168.1.0/24
 
     • (𝘀𝗰𝗮𝗻 𝗮 𝗿𝗮𝗻𝗴𝗲 𝗼𝗳 𝗶𝗽 𝗮𝗱𝗱𝗿𝗲𝘀𝘀𝗲𝘀)
-        nmap [target][ip range] : eg:nmap 192.168.1.4-10 (scans device with ip ending from 4 to 10)
+          nmap [ᴛᴀʀɢᴇᴛ][ip range] : eg:nmap 192.168.1.4-10 (scans device with ip ending from 4 to 10)
 
     • (𝘀𝗰𝗮𝗻 𝗺𝘂𝗹𝘁𝗶𝗽𝗹𝗲 𝗶𝗽 𝗮𝗱𝗱𝗿𝗲𝘀𝘀𝗲𝘀 𝗳𝗿𝗼𝗺 𝗮 𝗳𝗶𝗹𝗲)
-        nmap -iL [text file which contains list of ip addresses] : eg :- nmap -iL ip_lists.txt
+          nmap -iL [text file which contains list of ip addresses] : eg :- nmap -iL ip_lists.txt
 
     • (𝗲𝘅𝗰𝗹𝘂𝗱𝗲 𝘁𝗮𝗿𝗴𝗲𝘁𝘀 𝗳𝗿𝗼𝗺 𝗮 𝘀𝗰𝗮𝗻)
-        nmap -sn [range] --exclude [ip address of target] : eg:- nmap -sn 192.168.1.0/24 --exclude 192.168.1.8
+          nmap -sn [range] --exclude [ip address of target] : eg:- nmap -sn 192.168.1.0/24 --exclude 192.168.1.8
 
     • (𝗲𝘅𝗰𝗹𝘂𝗱𝗲 𝘁𝗮𝗿𝗴𝗲𝘁𝘀 𝗳𝗿𝗼𝗺 𝗮 𝘀𝗰𝗮𝗻 (𝗳𝗿𝗼𝗺 𝗳𝗶𝗹𝗲))
-        nmap -sn[range] --excludefile [file containing target ips] : eg:- nmap -sn 192.168.1.0/24 --excludefile excludedIps.txt
+          nmap -sn[range] --excludefile [file containing target ips] : eg:- nmap -sn 192.168.1.0/24 --excludefile excludedIps.txt
 
     • (𝘀𝗲𝗹𝗲𝗰𝘁𝗶𝗻𝗴 𝗮 𝗻𝗲𝘁𝘄𝗼𝗿𝗸 𝗶𝗻𝘁𝗲𝗿𝗳𝗮𝗰𝗲)
-        nmap -e [interface] [target] : eg:- nmap -e wlan0 192.168.1.7
+          nmap -e [interface] [target] : eg:- nmap -e wlan0 192.168.1.7
 
     • (𝘀𝗰𝗮𝗻 𝗶𝗽𝘃𝟲 𝘁𝗮𝗿𝗴𝗲𝘁𝘀)
           nmap -6 [ipv6 address] : eg:- nmap -6 fe80::f22f:74ff:fe9f:78f
+
+    • (𝘀𝗰𝗮𝗻 𝗿𝗮𝗻𝗱𝗼𝗺 𝘁𝗮𝗿𝗴𝗲𝘁𝘀)
+          nmap -iR [no. of ᴛᴀʀɢᴇᴛs] : eg:- nmap -iR 3 
+
+    • (𝗱𝗶𝘀𝗽𝗹𝗮𝘆 𝗽𝗼𝗿𝘁 𝘀𝘁𝗮𝘁𝗲 𝗿𝗲𝗮𝘀𝗼𝗻 𝗰𝗼𝗱𝗲𝘀) (Understanding Why a Port Has a Specific State)
+          nmap --reason [ᴛᴀʀɢᴇᴛ] : eg:- nmap --reason 192.168.1.6
+
+    • (𝗼𝗻𝗹𝘆 𝗱𝗶𝘀𝗽𝗹𝗮𝘆 𝗼𝗽𝗲𝗻 𝗽𝗼𝗿𝘁𝘀)
+          nmap --open [target] :eg:- nmap --open 192.168.29.4
+          
 
 
 
