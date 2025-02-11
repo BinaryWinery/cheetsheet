@@ -1,31 +1,43 @@
-1.GOOGLE DORKING
-------------------
-    site:[website domain]  : show results where url is the specified website domain
-    inurl:[content]        : show results which have the content in the url
-    filetype:[filetype]    : show result where the file result contain specific file (pdf,doc,xls..etc)
-    intext:[content]       : show result where the body of the result contains specific content
-    intitle:[content]      : show result where the title of the result contains specific content
-    before:[yyyy-mm-d]     : show result before the specified date
-    after:[yyyy-mm-d]      : show result after the specified date
+RECONNAISSANCE
+---------------
+    1. PASSIVE RECONNAISSANCE : gathering information without directly interacting with target , eg: OSINT,Google Dorking,Monitoring Network Traffic,Whois Lookup
+    2.  ACTIVE RECONNAISSANCE : gathering information    with directly interacting with target, eg : port scan, nmap,whatweb [can alert intrusion detection becasue it generate network traffic]
 
-    related:[website]      : show result which is related to the website specified (like related:amazon.com, will return sites similar to amazon.com , eg: ebay,wallmart...etc)
+PASSIVE RECONNAISSANCE
+-----------------------
+        1.GOOGLE DORKING
+        ------------------
+            site:[website domain]  : show results where url is the specified website domain
+            inurl:[content]        : show results which have the content in the url
+            filetype:[filetype]    : show result where the file result contain specific file (pdf,doc,xls..etc)
+            intext:[content]       : show result where the body of the result contains specific content
+            intitle:[content]      : show result where the title of the result contains specific content
+            before:[yyyy-mm-d]     : show result before the specified date
+            after:[yyyy-mm-d]      : show result after the specified date
+        
+            related:[website]      : show result which is related to the website specified (like related:amazon.com, will return sites similar to amazon.com , eg: ebay,wallmart...etc)
+        
+            DORKING OPERATORS
+            ------------------
+            OR   :  eg:- site:google.com OR site:amazon.com (the result will be either from google.com or amazon.com)
+            AND  :  eg:- site:google.com AND filetype:pdf   (the result will be both from google.com and file type that is pdf)
+        
+            OPERATORS COMBINATION
+            ---------------------
+            (site:facebook.com | site:twitter.com) & filetype:"pdf" :  (the result will be from "facebook.com" or "twitter.com" which have "pdf" filetype)
 
-    DORKING OPERATORS
-    ------------------
-    OR   :  eg:- site:google.com OR site:amazon.com (the result will be either from google.com or amazon.com)
-    AND  :  eg:- site:google.com AND filetype:pdf   (the result will be both from google.com and file type that is pdf)
+ACTIVE RECONNAISSANCE
+----------------------
+    1.WHATWEB
+    ----------
+      installations : apt install whatweb
+      usage :
+        whatweb [subnet] // subnet scan
+        whatweb [website] //website scan
+        whatweb -a 3 [website] //aggressive scan
+        whatweb -a 1 [website] //stealthy scan
+        whatweb [website] -v //verbose scan (detailed and pretty)
+        whatweb [subnet] --no-errors  // scan without showing errors
 
-    OPERATORS COMBINATION
-    ---------------------
-    (site:facebook.com | site:twitter.com) & filetype:"pdf" :  (the result will be from "facebook.com" or "twitter.com" which have "pdf" filetype)
 
-2.WHATWEB
-----------
-  installations : apt install whatweb
-  usage :
-    whatweb [subnet] // subnet scan
-    whatweb [website] //website scan
-    whatweb -a 3 [website] //aggressive scan
-    whatweb -a 1 [website] //stealthy scan
-    whatweb [website] -v //verbose scan (detailed and pretty)
   
