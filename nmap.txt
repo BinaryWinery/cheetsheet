@@ -12,6 +12,7 @@ other tools:
 ---------
   • nmap scripting engine (NSE) is what controls and runs scripts in Nmap.
   • Forewalls,Routers,proxy servers and other security devices can influence nmap scan results
+  • port range 1-65535
 
 3. INSTALLATION
 ----------------
@@ -61,7 +62,7 @@ closed/filtered : Port might be closed or filtered, but Nmap lacks enough inform
     • (𝘀𝗰𝗮𝗻 𝗶𝗽𝘃𝟲 𝘁𝗮𝗿𝗴𝗲𝘁𝘀)
           nmap -6 [ipv6 address] : eg:- nmap -6 fe80::f22f:74ff:fe9f:78f
 
-    • (𝘀𝗰𝗮𝗻 𝗿𝗮𝗻𝗱𝗼𝗺 𝘁𝗮𝗿𝗴𝗲𝘁𝘀)
+    • (𝘀𝗰𝗮𝗻 𝗿𝗮𝗻𝗱𝗼𝗺 𝘁𝗮𝗿𝗴𝗲𝘁𝘀) 
           nmap -iR [no. of ᴛᴀʀɢᴇᴛs] : eg:- nmap -iR 3 
 
     • (𝗱𝗶𝘀𝗽𝗹𝗮𝘆 𝗽𝗼𝗿𝘁 𝘀𝘁𝗮𝘁𝗲 𝗿𝗲𝗮𝘀𝗼𝗻 𝗰𝗼𝗱𝗲𝘀) (Understanding Why a Port Has a Specific State)
@@ -69,6 +70,43 @@ closed/filtered : Port might be closed or filtered, but Nmap lacks enough inform
 
     • (𝗼𝗻𝗹𝘆 𝗱𝗶𝘀𝗽𝗹𝗮𝘆 𝗼𝗽𝗲𝗻 𝗽𝗼𝗿𝘁𝘀)
           nmap --open [target] :eg:- nmap --open 192.168.29.4
+
+    • (𝗧𝗿𝗮𝗰𝗲 𝗽𝗮𝗰𝗸𝗲𝘁𝘀) //reveals detailed log of every packets sent and received (perfect for trouble shooting)
+          nmap --packet-trace [target]: eg:- nmap --packet-trace 192.168.1.6
+
+    • (𝗳𝗮𝘀𝘁 𝘀𝗰𝗮𝗻) (scans top common 1000 ports)
+          nmap -F [target] : eg:- nmap -F 192.168.1.24
+
+
+    • (𝘀𝗰𝗮𝗻 𝘀𝗽𝗲𝗰𝗶𝗳𝗶𝗰 𝗽𝗼𝗿𝘁𝘀)
+          nmap -p [port1],[port2],[port3] [target] : eg:- nmap -p 22,80,8080,4444 192.168.1.55 --scans only selected ports
+          nmap -p [port-range],[port-range],[port-range] [target] : eg:- nmap -p 80-160,4444-5555,8080-9000,443 192.168.1.52 --scans only selected port range
+          nmap -p [port name],[port name],[port name] [target]: eg:- nmap -p http,ssh,msrpc 192.168.1.54 --scans only port names
+          nmap -p "*" [target] : eg:- nmap -p "*" 192.168.1.26 --scans all port till 65535
+
+    • (𝗧𝗖𝗣 𝗦𝗰𝗮𝗻)
+          nmap -sT [target] : eg:- nmap -sT 192.168.1.27 --scans tcp ports only
+          nmap -sT T:[tcp port] [target] :eg:- nmap -sT T:80 192.168.1.29 --scans for only TCP port 80 (specific port)
+
+    
+    • (𝙐𝘿𝙋 𝙎𝙘𝙖𝙣)
+          nmap -sU [target] : eg:- nmap -sU 192.168.1.8 --scans udp ports only
+          nmap -sU U:[udp port] [target] : eg:- nmap -sU U:4444 192.168.1.6 --scans for only UDP port 4444 (specific port)
+
+
+    • (𝗧𝗖𝗣 𝗮𝗻𝗱 𝗨𝗗𝗣 𝗦𝗰𝗮𝗻 𝗶𝗻 𝗼𝗻𝗲)
+          nmap -sT -sU [target] : eg:- nmap -sT -sU 192.168.1.60 --scans for both UDP and TCP ports
+          nmap -sT -sU T:80 U:[udp port] [target] : eg:- nmap -sT -su T:80 U:4444 1922.168.1.70 --scans for both TCP port 80 and UDP port 4444 (specific ports)
+    
+    
+    • (𝗧𝗼𝗽 𝗣𝗼𝗿𝘁𝘀 𝗦𝗰𝗮𝗻 )
+          nmap --top-ports [number of ports] [target] : eg:- nmap --top-ports 10 192.168.1.7 --scans for top 10 ports on the target
+
+    • (𝗦𝗲𝗾𝘂𝗲𝗻𝘁𝗶𝗮𝗹 𝗣𝗼𝗿𝘁 𝗦𝗰𝗮𝗻) //scans port in numerical order instead of common ports
+          nmap -r [target]; eg:- nmap -r 192.168.1.8 --scans the port in numberic order 
+          nmap -p [port range] -r [target]; eg:- nmap -p 1-100 -r 192.168.1.150 --scans ports from 1-100 in numeric order
+
+••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
           
 
 
