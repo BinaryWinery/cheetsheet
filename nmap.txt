@@ -111,7 +111,112 @@ closed/filtered : Port might be closed or filtered, but Nmap lacks enough inform
     • 𝗡𝗼 𝗣𝗶𝗻𝗴 𝗦𝗰𝗮𝗻(allows scanning hosts even when firewalls or security rules block normal discovery methods ) (-PN in old versions)
           nmap -Pn [target] : eg:- nmap -Pn 192.168.29.150 --it scans the target directly ,instead of checking if the host is online ,which will be usefull if the firewall blocks pings or prevent host discovery
 
-••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+  
+    • (𝗣𝗶𝗻𝗴 𝗼𝗻𝗹𝘆 𝘀𝗰𝗮𝗻) (scans host in network) (used for host discovery) **ICMP ECHO REQUEST (PING) **
+          nmap -sP [ip range] :eg:- nmap -sP 192.168.1.0/24 --old version
+          nmap -sn [ip range] :eg:- nmap -sn 192.168.1.0/24 --new version 
+          
+    • (𝗧𝗖𝗣 𝗦𝘆𝗻 𝘀𝗰𝗮𝗻) (scan host in network ,when firewall is blocking normal ping (ICMP) packets) **TCP SYN PACKET**
+          nmap -PS [ip range] : eg:- nmap -PS 192.168.1.0/24 --scans host in network by sending TCP SYN packets to port 80 (default)
+          nmap -pS [port1],[port2] [target] :eg:- nmap -PS 22,443 192.168.1.0/24 --scan host in network by sending TCP SYN packets to port 22 and 443 instead of default port that is port 80
+
+          WHEN SYN SCAN IS USED
+          -----------------------
+            ○ Used when a firewall blocks ICMP (ping) requests.
+            ○ Can bypass basic firewalls that only filter ICMP.
+            ○ Works well when scanning web servers (port 80, 443, etc.)
+
+          WORKING
+          --------
+            ○ Used to discover live hosts when ICMP ping (-sn) is blocked by a firewall.
+            ○ Sends a SYN packet to a specified port (default: 80) and waits for a response.
+            ○ If the host replies with SYN-ACK, it's alive.
+            ○ If the host replies with RST, it's alive but the port is closed.
+            ○ If there’s no response, the host is likely down or filtered by a firewall.
+
+
+    • (𝗧𝗖𝗣 𝗔𝗖𝗞 𝗣𝗶𝗻𝗴) 
+          nmap -PA [ip range] :eg:- nmap -PA 192.168.1.0/24 --scans host in network by sending TCP ACK packets to port 80 (default)
+          nmap -PA [port1],[port2] [ip range]: eg:- nmap -PA 22,443 1922.168.1.0/24 --scan host in network by sending TCP ACK packets to port 22 and 443 instead of default port that is port 80
+
+          WHEN ACK SCAN IS USED
+          -----------------------
+            ○ Used when ICMP and SYN packets are blocked.
+            ○ Helps bypass some firewalls that allow outgoing connections but filter SYN.
+            ○ Useful for detecting firewalled hosts that still send RST responses.
+
+          WORKING
+          --------
+            ○ Used when both ICMP and SYN packets are blocked
+            ○ Sends an ACK packet instead of a SYN packet.
+            ○ If the target replies with RST, it's alive.
+            ○ If there's no response, it's either down or the firewall is dropping ACK packets.
+            ○ Unlike -PS, it does not check if the port is open—just if the host exists.
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •  
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •
+    •  
+    •
+    •
           
 
 
