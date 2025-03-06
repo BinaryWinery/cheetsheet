@@ -5,3 +5,5 @@ BOOT OS  USING VENTOY
 3. cd ventoy-1.0.99
 4. sudo ./Ventoy2Disk.sh -i /dev/sdb # replace /dev/sdb with the actuall  storage device location
 5. Copy the os (iso file to the storage device)
+
+note : use >> lsblk  (to find removable storage name)
