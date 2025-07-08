@@ -1,3 +1,5 @@
 build GO Executable : go build -o appname main.go
 build Smaller GO Executable : go build -ldflags="-w -s" -o appname main.go
 make app even smaller : upx --best --lzma appname
+make app for windows  : CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags="-s -w" -trimpath -o myapp.exe main.go
+run GO App : go run main.go
