@@ -1,0 +1,3 @@
+build GO Executable : go build -o appname main.go
+build Smaller GO Executable : go build -ldflags="-w -s" -o appname main.go
+make app even smaller : upx --best --lzma appname
