@@ -3,3 +3,50 @@ build Smaller GO Executable : go build -ldflags="-w -s" -o appname main.go
 make app even smaller : upx --best --lzma appname
 make app for windows  : CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -ldflags="-s -w" -trimpath -o myapp.exe main.go
 run GO App : go run main.go
+
+INITIALIZE PROJECT
+-----------------
+go mod init [module name]
+>> go mod init myModule
+
+DEFINE VARIABLES
+----------------
+explicit             : var city string = "newyork"
+implicit             : var city = "newyork" (compiler auto determine the data type)
+short declaration    : city := "newyork" (compiler auto determine the data type)
+multiple declaration : var name, age, country = "john", 21, "India"
+constant value       : const country = "Italy"
+
+
+DATA TYPES
+----------
+const name string = "john"
+const age int = 20
+const male bool = true
+const height float32 = 180.10
+
+message := fmt.Sprintf("Hello %s, You are %d years old, Male : %t and your height is %.2f", name, age, male, height)
+fmt.Println(message)
+
+ARITHMETIC OPERATORS
+--------------------
++ - Addition
+- - Substraction
+* - Multiplication
+/ - Division
+% - Modulus
+
+COMPARISON OPERATORS
+--------------------
+==   - Equal to
+!=   - Not Equal to
+>    - Greater Than
+<    - Lesser Than
+>=   - Greater Than or Equal To
+<=   - Lesser Than or Equal To
+
+LOGICAL OPERATORS
+-----------------
+&&   - Logical AND 
+||   - Logical OR
+!    - Logical NOT
