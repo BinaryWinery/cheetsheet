@@ -50,3 +50,106 @@ LOGICAL OPERATORS
 &&   - Logical AND 
 ||   - Logical OR
 !    - Logical NOT
+
+STRING
+------
+single line strings (double quotes)
+-----------------------------------
+var value string = "this is the string"
+
+multi line strings (tilda)
+--------------------------
+var multiLineValue string = `this 
+                                 is  
+                                    the 
+                                       string`
+concat strings
+--------------
+var first_name = "adolf"
+var last_name = "hitler"
+fmt.Println("My name is  "+first_name+" "+last_name)
+
+string length (len)
+--------------------
+var alphabets string = "abcdefghijklmnopqrstuvwxyz"
+fmt.Println("Length of alphabets : ", len(alphabets))
+
+strings package
+---------------
+import : import("strings")
+
+compare 
+-------
+var name1 string = "john"
+var name2 string = "john"
+fmt.Println(strings.Compare(name1, name2)) //returns 0 if true, -1,1 if false
+
+contains (check if a value is present in another value)
+-------------------------------------------------------
+var value1 string = "appsle
+var passage string = `i have apple,orange,grape,mango,watermelon and lemon`
+fmt.Println(strings.Contains(passage, value1))
+
+uppercase / lowercase
+---------------------
+var value1 string = "apple"
+var value2 string = "ORANGE"
+fmt.Println(strings.ToUpper(value1), strings.ToLower(value2)) //result :  APPLE orange
+
+CONDITIONAL STATEMENTS
+----------------------
+if else
+-------
+var number int = -20
+
+if number < 0 {
+	fmt.Println("The number is negative")
+} else if number > 0 {
+	fmt.Println("The number is positive")
+} else {
+	fmt.Println("The number is zero")
+}
+
+//result :  The number is negative
+
+switch statement
+---------------
+var number int = 9
+
+switch {
+ case number > 0:
+	fmt.Println("The number is Positive")
+case number < 0:
+	fmt.Println("The number is Negative")
+case number == 0:
+	fmt.Println("The number is Zero")
+default:
+	fmt.Println("Unknown")
+	}
+
+//result :  The number is positive
+
+another
+------
+var number int = 2
+
+	switch number {
+	case 1:
+		fmt.Println("The number is 1")
+	case 2:
+		fmt.Println("The number is 2")
+	case 3:
+		fmt.Println("The number is 3")
+	case 4:
+		fmt.Println("The number is 4")
+	case 5:
+		fmt.Println("The number is 5")
+	case 6:
+		fmt.Println("The number is 6")
+	case 7:
+		fmt.Println("The number is 7")
+  default:
+    fmt.Println("Unknown Number")
+	} 
+
+  //result : The number is 2
