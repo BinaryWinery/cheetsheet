@@ -1,0 +1,18 @@
+Virtual box in ubuntu
+----------------------
+error : virtual box cant enable the amd v extension please disable the kvm kernal extension recompile your kernal and reboot,
+
+fix :  (temporary)
+lsmod | grep kvm
+sudo modprobe -r kvm_amd kvm
+
+(permanent)
+fix : 
+*Edit /etc/default/grub, find the line starting with GRUB_CMDLINE_LINUX_DEFAULT, and include:*
+  kvm.enable_virt_at_load=0
+
+sudo update-grub
+sudo reboot
+blacklist kvm
+blacklist kvm_amd
+sudo update-initramfs -u
