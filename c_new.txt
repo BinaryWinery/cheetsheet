@@ -1,0 +1,12 @@
+INSTALLING C COMPILER ON WINDOWS
+---------------------------------
+  download mysys2 : [link] https://www.msys2.org/
+  [install]
+  [setup mysys2]
+  once a terminal shows up : [paste] >> pacman -S mingw-w64-ucrt-x86_64-gcc  >> [enter]
+
+CHECK GCC INSTALLED
+-------------------
+  terminal >> gcc --version
+  
+  
