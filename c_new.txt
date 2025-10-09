@@ -5,6 +5,12 @@ INSTALLING C COMPILER ON WINDOWS
   [setup mysys2]
   once a terminal shows up : [paste] >> pacman -S mingw-w64-ucrt-x86_64-gcc  >> [enter]
 
+  [add to system environment variable]
+  [copy mysys2 directory] >> C:\msys64\ucrt64\bin
+  [open] edit the system environment variable >> environment variables >>  path >> [paste] C:\msys64\ucrt64\bin
+  
+  
+
 CHECK GCC INSTALLED
 -------------------
   terminal >> gcc --version
