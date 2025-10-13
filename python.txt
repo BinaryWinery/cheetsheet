@@ -1,0 +1,79 @@
+PYTHON
+
+1. HELLO WORLD (print())
+-----------------------
+print("hello world") #double quotes
+print('hey whats up') #single quotes
+
+2.COMMENTING (# and ''')
+-------------------------
+a . #this is a single line comment
+b . '''
+      this is
+              a
+                multiline command'''
+
+3. VARIABLES AND DATATYPES
+--------------------------
+
+(python doesnt need datatypes to be declared)
+
+number1 = 800 #integer
+name = "JOHN"  #string
+_online = True #boolean
+weight = 60.987 #float
+
+4.TYPE OF VARIABLE (type())
+----------------------------
+name = "JOHN"
+age = 20
+wieght = 67.980
+isOnline = False
+
+print(type(name)) #<class 'str'>
+print(type(age))  #<class 'int'>
+print(type(weight)) #<class 'float'>
+print(type(isOnline)) #<class 'bool'>
+
+4. DECLARE VARIABLE IN SINGLE LINE
+----------------------------------
+name,age,weight,isOnline = "JOHN",26,60.897,False
+
+
+5.OPERATORS - ARITHMETIC OPERATORS (calculate values)
+----------------------------------------------------
++   : Addition (adds 2 or more numbers)
+-   : Substraction (substracts 2 or more numbers)
+*   : Multiplication (Multiply 2 or more numbers)
+/   : Division (Divide 2 or more number)
+%   : Modulus (remainder after dividing 2 or more numbers)
+**  : Exponentiation (find power)  (2**2 == 2^2 (square) , 2**3 == 2^3 (cube))
+//  : Floor Divider (round the division result into whole number), (7 // 3 = 2) (normal 7 /3 = 2.3333333333333335)
+
+6.OPERATORS - ASSIGNMENT OPERATORS (assign values)
+--------------------------------------------------
+=    : assign (x = 10)
++=   : (x+=4 => x = x+4)
+-+   : (x-=4 => x = x-4)
+*=   : (x*=4 => x = x*4)
+/=   : (x/=4 => x = x/4)
+%=   : (x%=4 => x = x%4)
+//=  : (x//=4 => x = x//4)
+**=  : (x**=4 => x = x**4)
+
+7.OPERATORS - COMPARISON OPERATORS (compare values)
+----------------------------------------------------
+equal to       : == (a == b) (return true if a same as b)
+not equal to   : != (a != b) (return true if a not same as b)
+Greater than   : >  (a > b ) (return true if a is greater than b)
+Lesser than    : <  (a < b ) (return true if a is lesser than b)
+Greater than or equal to : >= (a >= b ) (return true if a is greater than or equal to b)
+Lesser than or equal to  : <= (a <= b ) (return true if a is lesser than or equal to b)
+
+8.OPERATORS - LOGICAL OPERATORS (combine expressions/stastements)
+------------------------------------------------------------------
+and  : return true when both statement are true (a<b and a>0)
+or   : return true when one statement is true (a<b or a==2)
+not  : return opposite result (true if false and false if true) ( not a==200 )
+
+https://youtu.be/ihnWXGPxNEk?t=2163
