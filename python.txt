@@ -76,4 +76,158 @@ and  : return true when both statement are true (a<b and a>0)
 or   : return true when one statement is true (a<b or a==2)
 not  : return opposite result (true if false and false if true) ( not a==200 )
 
-https://youtu.be/ihnWXGPxNEk?t=2163
+9.STRINGS
+----------
+a. text = 'hello world' #single quote string
+b. text = "hello world" #double quote string
+c. text = """
+            hello
+                  world      
+        """ # multiline string
+
+d. text = "python is good"
+   index_number = 1
+   print(text[index_number]) #access charector from string with index number (result : y)
+
+e. text = "learn python language"
+   start_index_number = 2
+   end_index_number = 8
+   print(text[start_index_number:end_index_number]) #access content from index number to index number
+   #result : arn py 
+
+(len)
+f. text = "learn python language"
+   print(len(text)) #get length of string including whitespace
+
+(strip)
+g. text = "   i love python     "
+   print(text.strip()) #strips the starting and ending whitespaces
+
+(lower)
+h. text = "HELLO PAL"
+   print(text.lower()) #converts any uppercase to lowercase, result : hello pal
+
+(upper)
+i. text = "hello pal"
+   print(text.upper()) #converts any lowercase to uppercase, result : HELLO PAL
+
+(replace)
+j. text = "he is a digger"
+   old = "d"
+   new = "n"
+   print(text.replace(old,new)) #replace letter or word  to new word or letter, result : he is a nigger
+
+(format)
+k. name = "John"
+   age = 27
+   text = "my name is {} i am {} years old"
+   print(text.format(name,age)) #the placeholder {} will be replaced by the value provided
+   #result : my name is John i am 27 years old
+
+10.COLLECTIONS
+---------------
+ i. LIST
+ ii. TUPLE
+ iii. SET
+ iv. DICTIONARY
+
+a. LIST (METHODS) []
+
+      cars_list = ["porche","bmw","nissan","toyota"]
+
+      print(len(cars_list))             #length of the array, result : 4
+
+      print(cars_list[2])               #access element of array using index number , result : nissan
+
+      cars_list[1]="volkswagen"         #change element using index number, result : ['porche', 'volkswagen', 'nissan', 'toyota']
+
+      cars_list.append("lexus")         #add new value into array, result : ['porche', 'volkswagen', 'nissan', 'toyota', 'lexus']
+
+      cars_list.insert(2,"mercedes")    #add new value in specific position using index number, result : ['porche', 'volkswagen', 'mercedes', 'nissan', 'toyota', 'lexus']
+
+      cars_list.remove("toyota")        #remove a value by its value, result : ['porche', 'volkswagen', 'mercedes', 'nissan', 'lexus']
+
+      del cars_list[1]                  #remove element by its index number, result : ['porche', 'mercedes', 'nissan', 'lexus']
+
+      print("porche" in cars_list)       #check if a value is present in array , result : True
+
+      cars_list.clear()                 #remove every element in the array, result : []
+
+      del cars_list                     #remove the array itself, ie array don't exist, result : NameError: name 'cars_list' is not defined
+
+
+b. TUPLE  (METHODS) ()
+
+            #-----elements in tuple cannot be changed, added or removed---
+
+            fruits_tuple = ["apple","mango","banana","orange"]
+
+            print(len(fruits_tuple))              #length of the tuple, result : 4
+
+            print(fruits_tuple[1])                # access the element in tuple by index number , result : mango
+
+            print("orange" in fruits_tuple)       #check if a value is present in array , result : True
+
+            del fruits_tuple                      # remove the tuple itself, ie tuple don't exist, result : NameError: name 'fruits_tuple' is not defined
+
+
+c. SETS (METHODS) {}
+
+            #------set - un ordered and un indexed (index number always changes)------
+
+            vegetable_set = {"carrot","cabbage","onion","potato"}
+
+            print(len(vegetable_set)) #length of the set, result  4
+
+            vegetable_set.add("garlic") #add new value to set, result : {'carrot', 'cabbage', 'garlic', 'onion', 'potato'}
+
+            vegetable_set.update(["eggplant","radish","yam"]) #add multiple values to set, result : {'yam', 'carrot', 'cabbage', 'eggplant', 'potato', 'garlic', 'onion', 'radish'}
+
+            vegetable_set.remove("potato") #removes element from set by the value,result : {'garlic', 'cabbage', 'eggplant', 'carrot', 'radish', 'onion', 'yam'}
+
+            vegetable_set.discard("cabbage") #removes element from set without raising any kind of error, result : {'garlic', 'yam', 'radish', 'eggplant', 'carrot', 'onion'}
+
+            fruits_set = {"apple","strawberry"}
+            vegetable_set.union(fruits_set) #adds another set to a set, result :
+            mixed_set = vegetable_set.union(fruits_set) #mix elements of a set to another set, result : {'radish', 'strawberry', 'eggplant', 'garlic', 'carrot', 'apple', 'yam', 'onion'}
+
+            vegetable_set.clear() #removes every value from the set, result : set()
+
+            del vegetable_set #remove the set itself, ie set don't exist, result : NameError: name 'vegetable_set' is not defined
+
+            print(vegetable_set[1]) #cannot access elements by index number ,result : TypeError: 'set' object is not subscriptable
+            
+d. DICTIONARY (METHODS) {key:value}
+
+            #--------store in key value pair------------------
+
+            user1_dictionary = {
+                "name":"JOHN",
+                "age":25,
+                "email":"john123@gmail.com",
+                "phone":9879876541
+            }
+            
+            name = user1_dictionary["name"] #access the value by key name, result : JOHN
+
+            name_get = user1_dictionary.get("name") #access the value by key name (get method), result : JOHN
+
+            user1_dictionary["name"]= "MILAN" #change the value by the key, result : {'name': 'MILAN', 'age': 25, 'email': 'john123@gmail.com', 'phone': 9879876541}
+
+            print(len(user1_dictionary)) #get length of key pair value , result : 4
+
+            user1_dictionary["weight"]=67.98 #add new key value pair to the dictionary, result : {'name': 'MILAN', 'age': 25, 'email': 'john123@gmail.com', 'phone': 9879876541, 'weight': 67.98}
+
+            user1_dictionary.pop("age") #remove a key value pair in dictionary (returns the removed value of key), result : {'name': 'MILAN', 'email': 'john123@gmail.com', 'phone': 9879876541, 'weight': 67.98}
+
+            del user1_dictionary["email"] #remove a key value pair in dictionary (doesn't return anything just delete), result : {'name': 'MILAN', 'phone': 9879876541, 'weight': 67.98}
+
+            user1_dictionary.clear() #clears every key value pair in dictionary, result : {}
+
+            del user1_dictionary #removes the entire dictionary variable, result : NameError: name 'user1_dictionary' is not defined
+
+
+
+
+      
+      
