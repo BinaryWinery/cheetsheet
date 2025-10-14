@@ -382,8 +382,49 @@ c. if statement with logical operator
 
 
 
-15.RECURSION
-------------
+15.RECURSION (calling the function from the function itself)
+------------------------------------------------------------
+
+      def input_password():
+          value = input("enter password: ")
+          if value == "admin":
+              print("correct")
+          else:
+              input_password()
+      
+      input_password()
+
+      result: 
+            This will run until the user enters the correct password "admin" 
+
+16. LAMBDA (Anonymous function) (function without a name)
+-------------------------------
+
+      A. Simple lambda function
+      -------------------------
+
+      square = lambda value:value*value
+      
+      print(square(25))
+
+      result:
+            625
+
+      B. Lambda to filter odd and even numbers from array (using filter() function)
+      -----------------------------------------------------------------------------
+      list1 = [1,2,3,4,5,6,7,8,9]
+      
+      even_numbers = filter(lambda x:x%2==0,list1)
+      odd_numbers = filter(lambda x:x%2 ==1,list1)
+
+      print(list(even_numbers)) #result : [2, 4, 6, 8]
+      print(list(odd_numbers)) #result : [1, 3, 5, 7, 9]
+
+
+17. OOPS (OBJECT ORIENTED PROGRAMING)
+-------------------------------------
+https://youtu.be/ihnWXGPxNEk?t=6567
+      
 
 
 
