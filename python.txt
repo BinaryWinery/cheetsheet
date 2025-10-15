@@ -423,7 +423,37 @@ c. if statement with logical operator
 
 17. OOPS (OBJECT ORIENTED PROGRAMING)
 -------------------------------------
-https://youtu.be/ihnWXGPxNEk?t=6567
+a. simple class
+----------------
+
+      
+      class VegetablePriceList:
+          def __init__(self,name,price,availableQuantity):
+              self.name = name                            #property of a class
+              self.price = price                          #property of a class
+              self.availableQuantity = availableQuantity  #property of a class
+      
+          def showPriceList(self):    #method of a class
+              print(f"name: {self.name} price: {self.price}$ available: {self.availableQuantity}kg")
+      
+      
+      
+      vegetable1 = VegetablePriceList("cabbage",10,10)
+      vegetable2 = VegetablePriceList("carrot",13,3)
+      vegetable1.showPriceList() #result : name: cabbage price: 10$ available: 10kg
+      vegetable2.showPriceList() #result : name: carrot price: 13$ available: 3kg
+      
+      vegetable1.price = 5 #modify  a property in class
+      vegetable2.availableQuantity = 12 #modify a property in class
+      vegetable1.showPriceList() #result : name: cabbage price: 5$ available: 10kg
+      vegetable2.showPriceList() #result : name: carrot price: 13$ available: 12kg
+
+b. Inheritance
+--------------
+
+
+
+
       
 
 
