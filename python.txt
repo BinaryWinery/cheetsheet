@@ -5,7 +5,7 @@ PYTHON
 print("hello world") #double quotes
 print('hey whats up') #single quotes
 
-2.COMMENTING (# and ''')
+2. COMMENTING (# and ''')
 -------------------------
 a . #this is a single line comment
 b . '''
@@ -521,8 +521,42 @@ script.py >>
 
 20. USER INPUTS
 ----------------
+      name = input("Enter your name : ")
+      birthYear = int(input("Enter year of  birth : "))
+      weight = float(input("Enter your weight : "))
+      print(f"Hello {name}, you are {2025-birthYear} years old,your weight is {weight} pounds.")
+      
+      #result :
+      # Enter your name : John
+      #Enter year of  birth : 1998
+      #Enter your weight : 62.87
+      #Hello John, you are 27 years old,your weight is 62.87 pounds.
 
+21. FILE HANDLING (create,write,read,update a file)
+----------------------------------------------------------
+a. CREATE 
+---------
+      f = open("sample.txt","w") #replace "sample.txt" with any path or only filename.extension [creates in current path], w = write
+      f.close() # result : creates a file named sample.txt
 
+b. WRITE (overwrite)
+--------------------
+      f = open("sample.txt","w")
+      f.write("Hello world") #replace Hello world with any coontent
+      f.close() # result :creates a file with text "Hello world"
+
+c. WRITE (append)/UPDATE
+------------------------
+      f = open("sample.txt","r") #r = read
+      
+      whole_content = f.read() #read whole content
+      first_line = f.readline() #read first line
+      array_of_content = f.readlines() #read and make array of each line
+      
+      print(whole_content)# result :read "sample.txt" and display its  whole content
+      print(first_line)# result :read "sample.txt" and display its first line
+      print(array_of_content)# result :read "sample.txt" and display each line as element in array
+      f.close()
 
 
     
