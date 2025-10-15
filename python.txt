@@ -558,6 +558,12 @@ c. WRITE (append)/UPDATE
       print(array_of_content)# result :read "sample.txt" and display each line as element in array
       f.close()
 
+d. ANOTHER METHOD
+-----------------
+
+      with open("sample.txt") as f:
+          print(f.read())#so no need of f.close()
+
 
     
 
