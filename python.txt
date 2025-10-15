@@ -450,14 +450,77 @@ a. simple class
 
 b. Inheritance
 --------------
+properties and methods (data and behaviour) a child class (subclass) get from the parent class (superclass)
 
-
-
-
+      #parent class
+      class Hospital:
+          def __init__(self,name,phone):
+              self.name = name
+              self.phone = phone
       
+          def showUserDetails(self):
+              print(f"Username : {self.name} phone : {self.phone}")
+      
+      
+      #1st child class
+      class Doctor(Hospital):
+          pass
+      
+      #2nd child class
+      class Patient(Hospital):
+          pass
+      
+      doctor1 = Doctor("antony",9876567899)
+      patient1 = Patient("john",8077809988)
+      
+      doctor1.showUserDetails() # result :  Username : antony phone : 9876567899
+      patient1.showUserDetails() #result :  Username : john phone : 8077809988
+
+      #Doctor and Patient class can access the Hospital functions and properties because the chiild class is inherited from the parent
+
+
+18. MATH FUNCTIONS
+------------------
+      
+      numbersList = [25,78,98,5,23,11,6]
+      #min - shows the small number in an array
+      print(min(numbersList)) # result 5
+      #max - shows the big number in an array
+      print(max(numbersList)) #result 98
+      
+      #find power of a number (similar to base**exponent)
+      
+      print(pow(2,3)) #result 8 (2x2x2) ; base 2,exponent 3
+      print(pow(25,4)) #result 390625 (25x25x25x25) ; base 25, exponent 4
+      
+      #with math module
+      import math
+      
+      pi = math.pi
+      print(pi) #result : 3.141592653589793 (value of pi π)
+      
+      squareRoot = math.sqrt(9)
+      print(squareRoot) #result : 3 ; 3 is the square root of 9
+      
+      #gcd - great common divider (the biggest value that could divide all the provided value)
+      print(math.gcd(10,20,35,45,85)) #result : 5; the biggest value that can divide all the values 10,20,35,45,85 is 5
+
+
+19. CUSTOM MODULE
+-----------------
+myModule.py >>
+      def greeting(name):
+          print(f"hello {name}")
+
+script.py >>
+      import myModule
+      
+      myModule.greeting("Peter") #result : hello Peter
 
 
 
+20. USER INPUTS
+----------------
 
 
 
