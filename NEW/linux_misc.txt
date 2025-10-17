@@ -1,0 +1,46 @@
+1. Make a program run from desktop laucher (iconn)
+
+
+1.Make a program run from desktop laucher (icon)
+------------------------------------------------
+
+A. MAKE THE PROGRAM RUN GLOBALLY
+
+[at the program folder]
+
+[move the project to opt] 
+>> sudo mv /home/user/Downloads/program_folder /opt/program1
+
+[give executable permission to the executable] 
+>> sudo chmod +x /opt/program1/run.sh 
+
+[create symbolic link] 
+>> sudo ln -s /opt/program1/run.sh /usr/local/bin/program_run
+
+--now the program will be able to run from terminal when enter "program_run"--
+
+B. CREATE A DESKTOP ENTRY
+
+>> sudo nano /usr/share/applications/myapp.desktop
+
+[paste]>>
+
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=MyApp
+Icon=/opt/program1/MyApp_icon.png
+Exec="/opt/program1/run.sh" %f
+Comment=A symple program
+Categories=Development;IDE;
+Terminal=false
+StartupWMClass=jetbrains-pycharm
+
+/// Terminal = true/false (if your program is terminal based or not)
+/// other categories : AudioVideo, Development, Education, Game, Graphics, Network,Office, Settings, System, Utility
+/// %f allows opening files with the menu shortcut, if supported.
+/// StartupWMClass helps window managers associate the window correctly.
+
+[give executable permissions]
+>> sudo chmod +x /usr/share/applications/myapp.desktop
+
