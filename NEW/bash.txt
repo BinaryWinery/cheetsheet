@@ -289,7 +289,89 @@ file extension : .sh
 
 8. ARRAYS
 ----------
-https://youtu.be/BW6ebm2rXk4?list=PL1JrLEBAapUUcV6LES8bTEHJAOlkhmOHO
+      #!/usr/bin/bash
+      
+      fruits=("apple" "banana" "grape" "orange" "pineapple" "mango") # a simple array
+      
+      echo select element by index no. : ${fruits[1]} #access array element by index number ; result : select elemen by index no. : banana
+
+      echo last element of array : ${fruits[-1]} #access last element of array; result : last element of array : mango
+
+      fruits+=("guava") #add element to an array
+
+      fruits[1]="kiwi" #change element by its index number
+
+      echo all element in array : ${fruits[@]} #access all element in array ; result : all element in array : apple kiwi grape orange pineapple mango guava
+
+      echo length of array is : ${#fruits[@]} #get the length of array; result : length of array is : 7
+
+9. LOOP
+--------
+      A. WHILE LOOP
+      -------------
+            Print Hello world 5 times
+            --------------------------
+                  #!/usr/bin/bash
+                  
+                  i=1
+                  while ((i<=5))
+                  do
+                  	echo "Hello world"
+                  	((i++))
+                  done
+
+
+                  result:
+                        Hello world
+                        Hello world
+                        Hello world
+                        Hello world
+                        Hello world
+
+            Print 1-10
+            -----------
+                  #!/usr/bin/bash
+                  
+                  i=1
+                  while((i<=10))
+                  do 
+                  	echo "$i"
+                  	((i++))
+                  done
+
+                  result:
+                        1
+                        2
+                        3
+                        4
+                        5
+                        6
+                        7
+                        8
+                        9
+                        10
+
+      B. Until Loop (just like while loop)
+      ------------------------------------
+            Print Hello world 5 times
+            -------------------------
+                  #!/usr/bin/bash
+
+                  i=1
+                  until((i>5))
+                  do
+                  	echo "hello world"
+                  	((i++))
+                  done
+
+                  result:
+                        hello world
+                        hello world
+                        hello world
+                        hello world
+                        hello world
+                  
+
 
 
 
