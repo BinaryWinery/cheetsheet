@@ -107,6 +107,8 @@ file extension : .sh
 
 5. USER INPUT
 --------------
+            ----(greet name)----
+
             #!/usr/bin/bash
             
             echo "Enter your name : "
@@ -118,9 +120,148 @@ file extension : .sh
                   >> John  
                   Hello John
 
+            ----(find sum)----
+
+            #!/usr/bin/bash
+            
+            echo enter number 1 :
+            read num1
+            echo enter number 2 :
+            read num2
+            echo the sum of $num1 and $num2 is $((num1+num2))
+
+            result:
+                  enter number 1 :
+                  >> 4
+                  enter number 2 :
+                  >> 5
+                  the sum of 4 and 5 is 9
+
+
+            ---(shortcut method)----
                   
+            #!/usr/bin/bash
+
+            # -p makes user input in same line
+            read -p "enter 3 fruits (seperate by space)  : " fruit1 fruit2 fruit3
+            echo the fruits you selected are $fruit1,$fruit2,$fruit3
 
 
+            ----(silent mode ())----
+            #!/usr/bin/bash
+            
+            read -p "enter username : " uname
+            echo "enter password : "
+            read -s password                   #-s for silent
+            echo your username is $uname and password is $password
+
+            result :
+                  enter username : john
+                  enter password : 
+                  your username is john and password is 12345
+
+6. IF STATEMENT
+----------------
+
+            ARITHMETIC COMPARISON use : (())
+            ---------------------------------
+
+            #!/usr/bin/bash
+            
+            read -p "Enter a number : " number
+            
+            if((number<0))
+            then
+                    echo "The number $number is NEGATIVE"
+            elif ((number>0))
+            then
+                    echo "The number $number is POSITIVE"
+            else
+                    echo "The number is ZERO"
+            fi
+      
+            result :
+                  <1st response>
+                  Enter a number : 8
+                  The number 8 is POSITIVE
+
+                  <2nd response>
+                  Enter a number : -54
+                  The number -54 is NEGATIVE
+
+                  <3rd response>
+                  Enter a number : 0
+                  The number is ZERO
+
+
+            STRING COMPARISON use : [[]]
+            -----------------------------
+
+            #!/usr/bin/bash
+            
+            read -p "Enter username : " username
+            
+            echo "Enter Password : "
+            read -s password
+            
+            admin_username="admin"
+            admin_password="root"
+            
+            if [[ $username == $admin_username && $password == $admin_password ]]
+            then
+                    echo "Welcome $username"
+            else
+                    echo "Incorrect Username or Password"
+            fi
+
+            result :
+                  <1st response>
+
+                  Enter username : admin
+                  Enter Password : 
+                  >> root
+                 
+                  Welcome admin
+
+                  <2nd response>
+
+                  Enter username : fff
+                  Enter Password :
+                  >>fff
+                  Incorrect Username or Password
+      
+
+
+7. SWITCH CASE
+--------------
+
+            #!/usr/bin/bash
+            
+            read -p "Enter a letter : "  letter
+            
+            case $letter in
+                    A)
+                    echo "Apple";;
+                    B)
+                    echo "Bat";;
+                    C)
+                    echo "Car";;
+                    D)
+                    echo "Dog";;
+                    *)
+                    echo "Invalid Letter";;
+            esac
+
+            result : 
+                  Enter a letter : D
+                  Dog
+
+
+
+
+
+
+      
 
 
 
