@@ -234,7 +234,7 @@ file extension : .sh
 
 7. SWITCH CASE
 --------------
-
+            
             #!/usr/bin/bash
             
             read -p "Enter a letter : "  letter
@@ -255,6 +255,42 @@ file extension : .sh
             result : 
                   Enter a letter : D
                   Dog
+
+
+            MATCH MORE VALUES
+            ------------------
+
+            #!/usr/bin/bash
+            
+            read -p "Enter a letter : " letter
+            
+            case $letter in
+                    A|a)
+                            echo "apple";;
+                    B|b)
+                            echo "ball";;
+                    C|c)
+                            echo "cat";;
+                    D|d)
+                            echo "dog";;
+                    *)
+                            echo "unknown";;
+            esac
+
+
+            result :
+                  <1st response>
+                  Enter a letter : D
+                  dog
+
+                  <2nd response>
+                  Enter a letter : D
+                  dog
+
+8. ARRAYS
+----------
+https://youtu.be/BW6ebm2rXk4?list=PL1JrLEBAapUUcV6LES8bTEHJAOlkhmOHO
+
 
 
 
