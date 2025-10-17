@@ -1,0 +1,28 @@
+BASH
+
+os : provide interface between user and computer
+
+Kernal : it makes the communication between hardware and software
+
+kernal duties 
+---1. File management
+---2. Process Management
+---3. I/O Management (Input/Output)
+---4. Memmory Management
+---5. Device Management
+
+shell : If a program takes user input (commands), interprets them, and causes the OS to execute those commands, then that program qualifies as a shell
+shell scripting : is series of shell codes (bash program can read and execute this script)
+
+BASH (Bourne Again SHell) : successor of bourne shell (sh)
+      commandline interface shell program used in linux and macos(unix based) 
+
+other shells : c shell, korn shell , z shell, tcsh, dash ..etc)
+
+file extension : .sh
+
+1. HELLO WORLD
+---------------
+#!/usr/bin/bash
+
+echo hello world
