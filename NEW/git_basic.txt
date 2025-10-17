@@ -1,1 +1,46 @@
 
+GIT
+
+Git is a version control system
+
+INSTALL : apt install git (debian)
+
+CHECK GIT VERSION : git --version
+
+INITIALIZE GIT INTO PROJECT
+----------------------------
+git init
+
+VIEW TRACKED/UN_TRACKED FILES STATUS
+---------------------------------------
+git status
+
+TRACK FILES  USING GIT
+-----------------------
+git add <filename> #add single file/folder into git tracking
+git add . #add every files/folders into git tracking
+
+UN TRACK FILES
+---------------
+git rm --cached <filename> #untrack a tracked file
+git rm --cached -r #untrack all files 
+
+GIT COMMIT (prepare git to be pushed with a message)
+-----------------------------------------------------
+git commit -m "[message]"
+eg:- git commit -m "my initial commit"
+
+GIT IGNORE (file created to add filenames that doesnt need to be tracked or pushed)
+------------------------------------------------------------------------------------
+[create file ".gitignore]
+add file_path/folder_path into it
+
+eg:-
+    /node_modules/
+    .env
+
+(these files wont be tracked by git)
+
+https://youtu.be/CqaqRRGy0IY?list=PL4KwFGqvN4nsAlTIl6FcEubM2CtHW7zTC&t=592
+
+
