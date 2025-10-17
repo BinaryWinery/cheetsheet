@@ -370,9 +370,139 @@ file extension : .sh
                         hello world
                         hello world
                         hello world
-                  
 
 
+      C. For Loop
+      -----------
+                  Print Hello world 5 times
+                  -------------------------
+                        #!/usr/bin/bash
+                        
+                        for((i=0;i<=5;i++))
+                        do
+                        	echo "Hello world"
+                        done
+
+                        result:
+                              Hello world
+                              Hello world
+                              Hello world
+                              Hello world
+                              Hello world
+                              Hello world
+
+                  Print all elements of array
+                  ---------------------------
+
+                              #!/usr/bin/bash
+                              
+                              fruits=("apple" "orange" "grapes" "mango" "pineapple" "avocado" "watermelon")
+                              
+                              size_of_fruits=${#fruits[@]}
+                              
+                              for((i=0;i<=size_of_fruits;i++))
+                              do
+                              	echo ${fruits[i]}
+                              done
+
+                              result:
+                                    apple
+                                    orange
+                                    grapes
+                                    mango
+                                    pineapple
+                                    avocado
+                                    watermelon
+
+                        Print all elements of array (easy method)
+                        ------------------------------------------
+
+                              #!/usr/bin/bash
+                              
+                              fruits=("apple" "orange" "grapes" "mango" "pineapple" "avocado" "watermelon")
+                              
+                              for fruit in ${fruits[@]}
+                              do 
+                              	echo $fruit
+                              done
+                              
+                              result:
+                                    apple
+                                    orange
+                                    grapes
+                                    mango
+                                    pineapple
+                                    avocado
+                                    watermelon
+
+10. FUNCTIONS
+-------------
+      A. NORMAL FUNCTION
+      -------------------
+
+      #!/usr/bin/bash
+      
+      function greet(){
+      	echo "hello world"
+      }
+      
+      anotherGreet(){  #the function ain't mandatory
+      	echo "Good Morning"
+      }
+      
+      greet
+      greet
+      anotherGreet
+
+
+      result:
+            hello world
+            hello world
+            Good Morning
+
+
+      B. FUNCTION WITH ARGUMENTS AND PARAMETERS
+      -----------------------------------------
+
+      #!/usr/bin/bash
+      
+      function greet_by_name(){
+      	echo "hello $1"
+      }
+      
+      function greet_2_people(){
+      	echo "hello $1 and $2"
+      }
+      
+      greet_by_name "John"
+      greet_2_people "Peter" "Antony"
+
+      result:
+            hello John
+            hello Peter and Antony
+
+
+      C. FUNCTION WITH RETURN
+      -----------------------
+
+      #!/usr/bin/bash
+      
+      read -p "Enter a number : " num1
+      read -p "Enter another number : " num2
+      
+      function find_sum(){
+      	result=$(( $1 + $2 ))
+      	echo $result
+      }
+      
+      output=$(find_sum $num1 $num2)
+      
+      echo "Function output: $output"
+
+      result:
+            Enter a number : 4
+            Enter another number : 5
+            Function output: 9
 
 
 
