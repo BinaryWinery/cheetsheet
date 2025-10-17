@@ -23,6 +23,106 @@ file extension : .sh
 
 1. HELLO WORLD
 ---------------
+      #!/usr/bin/bash
+      
+      echo hello world
+
+      result : hello world
+
+2. SLEEP (delay before executing next command)
+----------------------------------------------
+      <string>
+      #!/usr/bin/bash
+      echo hello how are you
+      sleep 2
+      echo good morning
+
+      result : hello world
+               <-2 second delay->
+               good morning
+
+      <integer>
+      #!/usr/bin/bash
+      
+      num1=20
+      num2=87
+      result=$((num1+num2))
+      echo the sum of $num1 and $num2 is $result
+
+      result : the sum of 20 and 87 is 107
+
+
+3. VARIABLES
+-------------
+      #!/usr/bin/bash
+      name="John"
+      echo hello $name
+
+      result : hello John
+
+3. COMMENT
+----------
+      A. Single line comment
+      -----------------------
+            #!/usr/bin/bash
+            #this is a single line commment
+
+      B. Multiline Comment
+      -----------------------
+            : '
+            this
+              is
+                a
+                 multiline
+                        comment
+            '
+
+4. OPERATORS - ARITHMETIC OPERATORS (calculate values)
+-------------------------------------------------------
++   : Addition (adds 2 or more numbers)
+-   : Substraction (substracts 2 or more numbers)
+*   : Multiplication (Multiply 2 or more numbers)
+/   : Division (Divide 2 or more number)
+
 #!/usr/bin/bash
 
-echo hello world
+            num1=2
+            num2=40
+            
+            echo the sum of $num1 and $num2 is $((num1+num2))             # addition
+            echo the difference between $num2 and $num1 is $((num2-num1)) # substraction
+            echo the product of $num1 and $num2 is $((num1*num2))         # multiplication
+            echo the quitient of $num2 and $num1 is $((num2/num1))        # division
+            echo the remainder of $num2 and $num1 is $((num2%num1))       # modulus
+            echo the $num1 raised to $num2 is $((num1**num2))             # power
+
+            result : 
+                  the sum of 2 and 40 is 42
+                  the difference between 40 and 2 is 38
+                  the product of 2 and 40 is 80
+                  the quitient of 40 and 2 is 20
+                  the remainder of 40 and 2 is 0
+                  the 2 raised to 40 is 1099511627776
+
+
+5. USER INPUT
+--------------
+            #!/usr/bin/bash
+            
+            echo "Enter your name : "
+            read name
+            echo Hello $name
+
+            result:
+                  Enter your name : 
+                  >> John  
+                  Hello John
+
+                  
+
+
+
+
+
+
+
