@@ -41,6 +41,16 @@ eg:-
 
 (these files wont be tracked by git)
 
-https://youtu.be/CqaqRRGy0IY?list=PL4KwFGqvN4nsAlTIl6FcEubM2CtHW7zTC&t=592
+
+TRACK WITH GIT COMMIT -A (If already commited)
+-----------------------------------------------
+git commit -a -m "new commit message" 
+
+<if already tracked and committed (wont work with newly created files (untracked ones))>
+
+
+
+
+
 
 
