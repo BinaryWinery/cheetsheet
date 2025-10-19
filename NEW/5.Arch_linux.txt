@@ -1,1 +1,16 @@
 
+YAY 
+---
+1. install  package         : yay -S   [package name]
+2. uninstall package        : yay -R   [package name]
+3. remove package and       : yay -Rns [package name] 
+   un-needed dependencies
+4. remove orphans           : yay -Yc
+   [after removing]
+
+PACMAN
+-------
+1. install package          : pacman -S   [packagename]
+2. uninstall package        : pacman -R   [packagename]
+3. remove package and       : pacman -Rns [packagename]
+   un-needed dependencies
