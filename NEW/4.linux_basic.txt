@@ -5,8 +5,8 @@ GUI - Graphical User Interface
 shell - interprets the command we type and execute them
 REPL - primary function of shell,  REPLE cycles :  R'ead command -- E'valuate and execute command -- P'rints the result -- L'oops to the first step : R-E-P-L
 
-commands
----------
+A.COMMANDS
+------------
 
 1.ECHO
 -------
@@ -50,3 +50,9 @@ eg:- >> history
 
      <claer history and overrite (hard to recover)>
       >> history -cw
+
+B. FILESYSTEM
+--------------
+https://youtu.be/v392lEyM29A?t=1252
+
+
