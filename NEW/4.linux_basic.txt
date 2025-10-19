@@ -7,4 +7,27 @@ REPL - primary function of shell,  REPLE cycles :  R'ead command -- E'valuate an
 
 commands
 ---------
+1.ECHO
 echo "message" : prints the provided message
+eg:- >> echo "hello world"
+     >> [result] hello world
+
+2. EXPR
+expr "expression" : Print the value of EXPRESSION to standard output
+eg:- >> expr 5 + 6
+     >> [result] 11
+
+3. VARIABLE
+variable_name="value" : stores a value into a variable
+eg:-  >> my_ip=192.168.29.150
+      >> echo $my_ip
+      >> [result] 192.168.29.151
+
+4. EXPORT
+export variable_name="value" : stores a value to variable (but this can be accessed by bash scripts)
+eg:- >> export my_var="192.168.29.151"
+     >> [bash program which prints my_var] result : 192.168.29.151
+
+      <if it was variable_bane="value">
+      >> my_var="192.168.29.151"
+      >> [bash program which prints my_var] result : 
