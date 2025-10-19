@@ -14,3 +14,4 @@ PACMAN
 2. uninstall package        : pacman -R   [packagename]
 3. remove package and       : pacman -Rns [packagename]
    un-needed dependencies
+4. update                   : pacman -Syu
