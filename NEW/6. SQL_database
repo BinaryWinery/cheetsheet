@@ -1,0 +1,65 @@
+SQL - Structured Query Language
+
+Table  : Collection of data
+Row    : Elements in Table
+Column : Field in Row
+
+INSTALL SQLITE3 inn Archlinux
+------------------------------
+yay -S sqlite3
+
+
+eg:- file : users.db
+-----------------------------------------------------------------
+  table:users                                                   | <- table
+-----------------------------------------------------------------
+id |    name    |   email              |  phone    | password   |
+-----------------------------------------------------------------
+1  |   john     |    john@gmail.com    | 8009009    | pass123   | <- row
+2  |   antony   |    anto98@gmail.com  | 9997776    | abcd111   |
+3  |   peter    |    pete4@gmail.com   | 767999     | pil009    |
+4  |   milan    |    milan7@gmail.com  | 990088     | yt6@1     | 
+-----------------------------------------------------------------
+      ^ column
+
+      
+QUERIES
+--------
+
+1. make/create/open new db file
+--------------------------------
+sqlite3 users.db 
+
+2. Create schema
+-----------------
+[in sqlite3]
+
+CREATE TABLE users (
+    id INTEGER PRIMARY KEY,
+    name TEXT NOT NULL,
+    email TEXT NOT NULL UNIQUE,
+    phone TEXT NOT NULL UNIQUE,
+    password TEXT NOT NULL
+);
+
+2. INSERT A  NEW ROW
+---------------------
+INSERT INTO users (name,email,phone,password) VALUES ('lisa','lisa2@gmail.com','998877','lisa666');
+
+3.SELECT
+---------
+  A. Select all columns (lists all data in the table users)
+  -----------------------------------------------------------
+  SELECT * FROM users;
+
+  B. Select specific columns (lists only name and email field)
+  ------------------------------------------------------------
+  SELECT name,phone FROM users;
+
+  C.  Select clause with conditions
+  ----------------------------------
+  SELECT * FROM users WHERE email='anto98@gmail.com' AND password='abcd111';
+
+  result: 2|antony|anto98@gmail.com|9997776|abcd111
+
+
