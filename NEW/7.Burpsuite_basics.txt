@@ -1,0 +1,77 @@
+Burpsuite
+---------
+used for security audits
+developed by portswigger
+alternatives : ZAP (made by owasp)
+
+
+1.CORE COMPONENTS OF BURPSUITE
+-------------------------------
+A. Proxy
+--------
+intercepts and analyze the traffic between the user's browser and target application.This is useful for identifying vulnerabilities and analyzing the data being transmitted/recevied
+
+B.Scanner
+---------
+automated tool that scans web applications for common security issues like SQL injection (SQLI),Cross-site scripting (XSS),and other vulnerabilities.
+
+C.Intruder
+----------
+tool for performing automated attacks on web app,like bruteforce,parameter fuzzinng ..etc to identify weakness
+
+D.Repeater
+-----------
+allows users to mannually modify and resend HTTP requests to test how the application responds to different inputs
+
+E.Decoder
+----------
+Helps in decoding and encoding data to understand how it is transmitted between client and server
+
+F. Comparer
+------------
+compares different sets of data or responses to identify differences that may indicate security issues.
+
+2.SETUP BURPSUITE WITH BROWSERS USING FOXY PROXY
+-------------------------------------------------
+[install extension]
+firefox > https://addons.mozilla.org/en-US/firefox/addon/foxyproxy-standard/
+chrome > https://chromewebstore.google.com/detail/foxyproxy/gcknhkkoolaabfmlnjonogaaifnjlfnp
+
+A.Configure Extension
+----------------------
+  extension > options > proxies [tab] > add  >>
+    [configurations]
+    title : burpsuite (or anything)
+    type  : HTTP
+    hostname : 127.0.0.1 (hostname same as burpsuite>proxy>options/proxy settings > proxy listeners)
+    port : 8080 (same as in burpsuite)
+        [[save]]
+
+B. Export/Import CA certificate (for working with HTTPS websites)
+------------------------------------------------------------------
+  Export Certificate (from burpsuite)
+  -----------------------------------
+  burpsuite > Proxy > Options/Proxy settings > Import/Export CA certificate > Export > Certificate in DER format > save [with der extension]
+
+  Import Certificate (to browser)
+  -------------------------------  
+  browser > settings > [search] certificates > View Certificates > Import > [select saved der file]
+  
+C. Enable FOxy proxy
+---------------------
+foxy proxy  extension > enable [the created in A ]
+
+
+https://youtu.be/slxHpp7ilYU?t=1176
+
+
+
+
+
+
+
+
+
+
+
+
