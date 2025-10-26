@@ -79,3 +79,14 @@ pvcreate /dev/mapper/lvm             #---change lvm to the name we gave at crypt
 [create a volume group]
 vgcreate volgroup0 /dev/mapper/lvm   #---change lvm to the name we gave at cryptsetup open
 
+[create a logical volume]
+>> lvcreate -L 30GB volgroup0 -n lv_root (for root partition) 
+>> lvcreate -L 250GB volgroup0 -n lv_home (for home partition) #replace 250GB with what you have remaining space
+
+[display volume groups]
+>> vgdisplay
+
+[display logical volumes]
+>> lvdisplay
+
+https://youtu.be/FxeriGuJKTM?t=2313
