@@ -1,0 +1,81 @@
+ARCH LINUX INSTALL
+-------------------
+1. check network connection
+-----------------------------
+>> ip addr show
+
+2. Connect Wifi (optional)
+--------------------------
+>> iwctl
+  >> station wlan0 get-networks     #replace "wlan0" with actual wifi interface --(search available networks)---
+  >> iwctl --passphrase "enter wifi password here" station wlan0 connect WIFI_SSID   #replace passphrase as wifi password (in quotes),wlan0 with wifi your interface, and WIFI_SSID with your wifi ssid   --(connect to a networks)--- 
+
+4. Set up Password (for installation only) -- can be used for ssh access--
+------------------------------------------
+>>passwd
+[set new password]
+
+3. Setup SSH (optional)
+------------------------
+[ssh status] >> systemctl status sshd
+[start ssh] >> systemctl start sshd
+
+4. Partitioning the disk
+-------------------------
+[list disks] >> lsblk
+[choose a disk for OS be instsalled] here : sda (other examples : nvme0n1)
+[partition] >> fdisk
+              [fdisk] >> p #--p for printing partition table--
+              [fdisk] >> g #--g for deleting old partition table and create new---
+              
+              [making 1st partition]
+              [fdisk] >> n #--n for adding new Partition--
+                  [n] >> partition number : (number or enter for default (1))
+                  [n] >> first sector : (enter for default)
+                  [n] >> last sector : +1G     #--creates a partition of 1GB--
+
+              [making 2nd partition]
+              [fdisk] >> n #--n for adding new Partition--
+                  [n] >> partition number : (number or enter for default (2))
+                  [n] >> first sector : (enter for default)
+                  [n] >> last sector : +1G     #--again creates another partition of 1GB--
+
+              [making 3rd partition] (LVM) --this is where linux system isntalls--
+              [fdisk] >> n #--n for adding new Partition--
+                  [n] >> partition number : (number or enter for default (3))
+                  [n] >> first sector : (enter for default)
+                  [n] >> last sector : (enter for assigning remaining space of hard disk)
+
+              [set 3rd partition type to linuxLVM ]
+              [fdisk] >>t #--t for changing type of partition---
+                    [t] >> prtition number : (default 3)
+                    [t]partition type : 44 (or Linux LVM)
+
+
+              [write memmory partiition table to the disk]
+              [fdisk[ >> w #-- w for writing partition table into the disk---
+
+
+5. Frmatting/Encrypting the partitions
+---------------------------------------
+[fat32 partition -1st partition]
+[1st partition as fat32 ] >> mkfs.fat -F32 /dev/sda1 #--change it to the 1st partition you created (eg: nvme0n1p1)-- 
+
+[ext4 partition -2nd partition]
+[1st partition as fat32 ] >>  mkfs.ext4 /dev/nvme0n1p2 #--change it to the 2nd partition you created (eg: nvme0n1p2)-- 
+              
+[Encrypting the 3rd partition]
+>> cryptsetup luksFormat /dev/sda3 #---change it according to your 3rd partition (eg : nvme0n1p3)
+  [cryptsetup] overrite data on /dev/nvme0n1p3 : YES
+  [cryptsetup] Enter passphrase : ENTER_A_PASSWORD
+
+[open partition 3 and format partition 3]
+cryptsetup open --type luks /dev/sda3 lvm #--change sda3 according to your 3rd partition) #change lvm to any name
+
+
+[create a physical volume ]
+pvcreate /dev/mapper/lvm             #---change lvm to the name we gave at cryptsetup open
+
+[create a volume group]
+vgcreate volgroup0 /dev/mapper/lvm   #---change lvm to the name we gave at cryptsetup open
+
