@@ -24,10 +24,10 @@ ARCH LINUX INSTALL
 ---------------------------------------------------
 dd if=/dev/urandom of=[disk path]] bs=4096 status=progress
 eg:- dd if=/dev/urandom of=/dev/sda bs=4096 status=progress
-                  if=/dev/urandom -> (INPUT) file which generates psuedo random bytes
-                  of=/dev/nvme0n1 -> (OUTPUT) file where random bytes will be written
-                  bs=4096         -> block size (4096 = 4KB), 4KB chunks will be written to OUTPUT
-                  status=progress -> shows progress output (bytes transfferred,speed,etc...)
+                  if=/dev/urandom : (INPUT) file which generates psuedo random bytes
+                  of=/dev/nvme0n1 : (OUTPUT) file where random bytes will be written
+                  bs=4096         : block size (4096 = 4KB), 4KB chunks will be written to OUTPUT
+                  status=progress : shows progress output (bytes transfferred,speed,etc...)
 
 partition structure
 -------------------
@@ -72,4 +72,217 @@ eg:- gdisk /dev/sda
           --returns the code (8309)--
       [gdisk] >> Hex code or GUID : 8309
 
-      
+
+      ---write to disk----
+      [gdisk] >> w
+
+
+      [set partition for /home directory] (OPTIONAL) --on 2nd disk
+      ------------------------------------------------------------
+          gdisk [disk]
+          eg:- gdisk /dev/sdb 
+
+          [gdisk] >> n    #create new partition
+          [gdisk] >> Partition number (default:3) : [default]
+          [gdisk] >> First Sector : [default]
+          [gdisk] >> Last Sector : [default: remaining space]
+          [gdisk] >> Hex code or GUID : L
+                    [gdisk] search string : home
+                    --returns the code (8302)--
+          [gdisk] >> Hex code or GUID : 8302
+
+                ---write to disk----
+                [gdisk] >> w
+
+4. Adding full disk encryption with luks (Linux unified Key setup)
+-------------------------------------------------------------------
+          >> modprobe dm-crypt       #load the dm-crypt kernal module (for enabling transparent disk encryption 
+          >> modprobe dm-mod         #load the Device mapper kernal module (for enabling the Device mapper framework  
+                                      which underpins vaira=ous advanced storrage features such as 
+                                      LVM (Logical Volume Management), software RAID,disk encryption and more
+
+          --encrypt the 3rd partition /root--
+          >> cryptsetup luksFormat -v -s 512 -h sha512 /dev/sda3  #used to initialize a LUKS encrypted volume on the 
+                                                                   specified block device, this will erase all 
+                                                                   exisiting data on the device
+
+          cryptsetup : utility for managing disk encryption using LUKS
+          luksFormat : sub command to format a device with LUKS encryption
+          -v         : shows verbose outout
+          -s 512     : sets the master key size to 512bits
+          -h sha512  : specifies the has algorithm for passphrase hasing as SHA512
+          /dev/sda   : the raget block
+
+          --encrypt the /home partition-- (OPTIONAL)--
+          >> cryptsetup luksFormat -v -s 512 -h sha512 /dev/sdb1 #change sdb1 according to your disk name
+
+5. Setting up logical Volumes
+-----------------------------
+          [decrypt and mount root partition 3rd partition]
+          -------------------------------------------------
+          >> cryptsetup open /dev/sda3 luks_lvm # decrypt and mount our encrypted partition (3rd partition (/root))
+
+
+            cryptsetup : utility for managing disk encyption using LUKS
+            open       : Subcommand to unlock a LUKS-encrypted partition
+            /dev/sda   : the target block
+            luks_lvm   : the name assigned to the decrypted device (which is going to appear as /dev/mapper/luks_lvm)                          (now a file will be created in /dev/mapper with name luks_lvm)
+                             
+          [create physical volume]
+          >> pvcreate /dev/mapper/luks_lvm   #creates a physical volume (allows it to be included in a volume group 
+                                                (VG) for creating logical volumes (LVs)  
+
+          [create a volume group]
+          >> vgcreate arch /dev/mapper/luks_lvm #creates a Volume group named "arch" from specified physical volume
+
+          [create a logical volume] -for swap device
+          ------------------------------------------
+          >> lvcreate -n swap -L 16G -C y arch #creates a swap logical volume named swap with a size of 16 GB in the 
+                                                existing volume group arch
+
+          lvcreate : creates new logical  volume
+          -n swap  : names the logical volume "swap" (can be any name)
+          -L 16G   : allocates 16GB of space for logical volume
+          -C y     : specifies that the logical volume should be contiguous, meaning the physical extends allocated 
+                     to it will be adjacent on the disk (this is often required for sswap viumes to ensure optimal 
+                     performance)
+
+          arch     : the volume group where the logical volume will be created
+
+
+          [create a logical volume] -for /root device
+          ------------------------------------------
+          >> lvcreate -n root -l +100%FREE arch #creates a logical volume named root that utilized all the remaining 
+                                                 free sace in the arch vuolume group
+
+          lvcreate     : creates new logical  volume
+          -n root      : names the logical volume "root" (can be any name)
+          -l +100%FREE : Allocates all available free space in the arch volume group to this logical volume
+          arch         : specifies the volume group where the logical volume will be created
+
+
+          [decrypt and mount /home  partition] (OPTIONAL (if /home is set sepearate))
+          ---------------------------------------------------------------------------
+          >> cryptsetup open /dev/sdb arch_home # decrypt and mount our encrypted partition ((/home))
+
+6. Set up the filesystem
+-------------------------
+          [format efi partition (partition 1)]
+          ------------------------------------
+          >> mkfs.fat -F32 /dev/sda1      #format partition1 as fat32
+
+          [format boot partition (partition 2)]
+          -------------------------------------
+          >> mkfs.ext4 /dev/sda2          #format partition1 as ext4
+
+          [format root partition ]
+          ------------------------
+          >> mkfs.btrfs -L root /dev/mapper/arch-root #format the logical volume arch-root as btrfs
+
+             -L root               : assignes a label "root" to filesystem (can be any name)
+             /dev/mapper/arch-root : the logical volume that need to be formatted with btrfs
+
+
+          [format home partition] (OPTIONAL (if /home is seperate))
+          ----------------------------------------------------------
+          >> mkfs.btrfs -L home /dev/mapper/arch-home #format the logical volume arch-root as btrfs
+
+          [format swap volume]
+          --------------------
+          >> mkswap /dev/mapper/arch-swap #formats swap volume
+
+7. Mounting Disks
+------------------
+          [mount swap space]
+          -------------------
+          >> swapon /dev/mapper/arch-swap #mounts swap volume
+          >> swapon -a #mark it as available
+
+          [mount root volume to the /mnt directory]
+          ------------------------------------------
+          >> mount /dev/mapper/arch-root /mnt    #mount root volume
+          >> mkdir -p /mnt/{home,boot}           #create home and boot directory 
+
+          [mount boot partition to /boot directory]
+          -----------------------------------------
+          >> mount /dev/sda2 /mnt/boot
+
+          [mount home volume to /home directory] (OPTIONAL (if /home is seperate))
+          ------------------------------------------------------------------------
+          >> mount /dev/mapper/arch-home /mnt/home 
+
+          [make new EFI directory inside boot folder]
+          -------------------------------------------
+          >> mkdir /mnt/boot/efi
+
+          [mount efi partition to /newly created efi folder]
+          ---------------------------------------------------
+          mount /dev/sda1 /mnt/boot/efi
+
+8. Installing Arch
+------------------
+
+          >> pacstrap -K /mnt base linux linux-firmware #installs essential packages needed for a minima arch linux 
+                                                         system onto mounted root partition (/mnt)
+
+
+
+          pacstrap           : a script provided by archlinux to isntall packages into a new system
+          -K                 : this option copies host's /etc/pacman.d/mirrorlist to the new system and initializes 
+                                the pacman keyring
+          /mnt               : mount point on the new root partition
+          base               : the essential package group that includes the core utilities needed for a minimal arch 
+                               linux system
+          linux              : the linux kernal package
+          linux firmware     : firmware files for various harware components
+
+9. Save filesystem table to our new system
+-------------------------------------------
+          [save filesystem table to new system]
+          -------------------------------------
+          >> genfstab -U -p /mnt > /mnt/etc/fstab #it generates a new /etc/fstab file for your installed system, 
+                                                   ensuring that all mounted filesystem are properly configured to 
+                                                    mount automatically at boot
+
+
+          genfstab              : utility generate an /etc/fstab file, which contains information about disk 
+                                   partitions and filesystems
+          -U                    : this tells genfstab to use UUIDs (Universally Unique Identifiers) for the 
+                                   filesystem entities
+          -p                    : this excludes pseudo-filesystem (such as proc,sysfs)
+          /mnt                  : this is the root directoryof our newly installed system
+          > /mnt/etc/fstab      :  this part redirects the output of genfstab into the /etc/fstab file of new system
+
+          [load up a shell inside our system]
+          -----------------------------------
+          >> arch-chroot /mnt /bin/bash          # used to chroot (change root) into the newly installed system 
+                                                   mmounted at /mnt and start a bash shell. (from now on we will be 
+                                                    using the new system shell (bash))
+
+          [install necessary packages]
+          ----------------------------
+                    [install base devel]
+                      >> pacman -S base-devel #the basedevel package contains collection of development tools 
+                                                commonly required for building and compiling software from source, 
+                                                  tools such as gcc,make,fakeroot
+
+10. Decryption on Boot
+-----------------------
+#for our operating system to be able to boot [configuring linux to decrypt our volumes when it starts]
+
+          >> pacman -S nano #for editing text (use any text editor)
+          >> nano /etc/mkinitcpio.conf
+                    [go to HOOKS line]
+                    **add encrypt lvm2 into it (between block and filesystem)
+          it may look like : HOOKS=(base udev autodetect microcode modconf kms keyboard keymap consolefont block 
+                              encrypt lvm2 filesystem fsck )
+
+                    --[save and exit]--
+
+          [install lvm2 package on system for the hook to be available]
+          --------------------------------------------------------------
+          >> pacman -S lvm2 #this makes the hook to be available and regenerate our linux image
+
+11. Installing Bootloader
+--------------------------
+          
