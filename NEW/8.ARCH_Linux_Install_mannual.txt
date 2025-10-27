@@ -285,4 +285,20 @@ eg:- gdisk /dev/sda
 
 11. Installing Bootloader
 --------------------------
+          [install grub nd efibootmgr]
+          ----------------------------
+          >> pacman -S grub efibootmgr
+
+
+                    grub           : popular bootloader (boot manager) allows us to boot one or more operating        
+                                      systems,handles reading kernals,initramfs, and passing kernal parameters
+
+                    efibootmgr     : tool to modify the UEFI firmware boot entries (in NVRAM), it controls which 
+                                        bootloader the firmware will launch, sets order of boot entries..etc
+
+          [install grub onto our boot partition]
+          --------------------------------------
+          >> grub-install --efi-directory=/boot/efi
+
+          https://youtu.be/YC7NMbl4goo?t=826
           
