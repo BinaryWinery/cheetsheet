@@ -1,92 +1,75 @@
 ARCH LINUX INSTALL
 -------------------
-1. check network connection
------------------------------
->> ip addr show
 
-2. Connect Wifi (optional)
---------------------------
+1. Connnect WIFI (optional)
+----------------------------
 >> iwctl
-  >> station wlan0 get-networks     #replace "wlan0" with actual wifi interface --(search available networks)---
-  >> iwctl --passphrase "enter wifi password here" station wlan0 connect WIFI_SSID   #replace passphrase as wifi password (in quotes),wlan0 with wifi your interface, and WIFI_SSID with your wifi ssid   --(connect to a networks)--- 
+[iwctl] >>device list                         #show available devices
+[iwctl] >> station [interface] connect [ssid] #connect to a wifi
+          eg:- station wlan0 conect myWifi    #connect to wifi named myWifi with wlan0 interface  (it will ask for passphrase if present)
+[iwctl] >> exit
 
-4. Set up Password (for installation only) -- can be used for ssh access--
-------------------------------------------
->>passwd
-[set new password]
+2. SSH (optional)
+------------------
+>> ip addr                                   #find ip address
+>> sudo systemctl start sshd                 #start ssh server
+>> passwd                                    #set a password for ssh to connect
+>> sudo systemctl status sshd                #get status of sshd
 
-3. Setup SSH (optional)
+3. Partitioning the disk
 ------------------------
-[ssh status] >> systemctl status sshd
-[start ssh] >> systemctl start sshd
+>> lsblk                                     #get the availabe device list
 
-4. Partitioning the disk
--------------------------
-[list disks] >> lsblk
-[choose a disk for OS be instsalled] here : sda (other examples : nvme0n1)
-[partition] >> fdisk
-              [fdisk] >> p #--p for printing partition table--
-              [fdisk] >> g #--g for deleting old partition table and create new---
-              
-              [making 1st partition]
-              [fdisk] >> n #--n for adding new Partition--
-                  [n] >> partition number : (number or enter for default (1))
-                  [n] >> first sector : (enter for default)
-                  [n] >> last sector : +1G     #--creates a partition of 1GB--
+[overrite entire disk with random data] [OPTIONAL] --to make the recovering of data much difficult--
+---------------------------------------------------
+dd if=/dev/urandom of=[disk path]] bs=4096 status=progress
+eg:- dd if=/dev/urandom of=/dev/sda bs=4096 status=progress
+                  if=/dev/urandom -> (INPUT) file which generates psuedo random bytes
+                  of=/dev/nvme0n1 -> (OUTPUT) file where random bytes will be written
+                  bs=4096         -> block size (4096 = 4KB), 4KB chunks will be written to OUTPUT
+                  status=progress -> shows progress output (bytes transfferred,speed,etc...)
 
-              [making 2nd partition]
-              [fdisk] >> n #--n for adding new Partition--
-                  [n] >> partition number : (number or enter for default (2))
-                  [n] >> first sector : (enter for default)
-                  [n] >> last sector : +1G     #--again creates another partition of 1GB--
+partition structure
+-------------------
+Efi   - (EFI System PArtition (esp)) is partition formatted with FAT32, used by uefi firmware to locate and load bootloaders and related files (300-500MB)
+/boot - Holds file necessary for the boot process ,formatted with ext4/btrfs includes kernal,initramfs images, and bootloader configuration files (1-2GB)
+/root - Holds the Operating system and system files. formatted with ext4/btrfs (15-20)
+swap  - Used as Virtual Memmory 
 
-              [making 3rd partition] (LVM) --this is where linux system isntalls--
-              [fdisk] >> n #--n for adding new Partition--
-                  [n] >> partition number : (number or enter for default (3))
-                  [n] >> first sector : (enter for default)
-                  [n] >> last sector : (enter for assigning remaining space of hard disk)
+Partitioning
+------------
+gdisk [disk]
+eg:- gdisk /dev/sda
+      [gdisk] >> p    #shows the current layout
+      
+      --patition 1 -- EFI
+      [gdisk] >> n    #create new partition
+      [gdisk] >> Partition number (default:1) : [default]
+      [gdisk] >> First Sector : [default]
+      [gdisk] >> Last Sector : +512MB
+      [gdisk] >> Hex code or GUID : L
+          [gdisk] search string : efi
+          --returns the code (ef00)--
+      [gdisk] >> Hex code or GUID : ef00
 
-              [set 3rd partition type to linuxLVM ]
-              [fdisk] >>t #--t for changing type of partition---
-                    [t] >> prtition number : (default 3)
-                    [t]partition type : 44 (or Linux LVM)
+      --partition 2 --BOOT
+      [gdisk] >> n    #create new partition
+      [gdisk] >> Partition number (default:2) : [default]
+      [gdisk] >> First Sector : [default]
+      [gdisk] >> Last Sector : +4G
+      [gdisk] >> Hex code or GUID : L
+          [gdisk] search string : boot
+          --returns the code (ef02)--
+      [gdisk] >> Hex code or GUID : ef02
 
+      --partition 3 --ROOT
+      [gdisk] >> n    #create new partition
+      [gdisk] >> Partition number (default:3) : [default]
+      [gdisk] >> First Sector : [default]
+      [gdisk] >> Last Sector : [default: remaining space]
+      [gdisk] >> Hex code or GUID : L
+          [gdisk] search string : luks
+          --returns the code (8309)--
+      [gdisk] >> Hex code or GUID : 8309
 
-              [write memmory partiition table to the disk]
-              [fdisk[ >> w #-- w for writing partition table into the disk---
-
-
-5. Frmatting/Encrypting the partitions
----------------------------------------
-[fat32 partition -1st partition]
-[1st partition as fat32 ] >> mkfs.fat -F32 /dev/sda1 #--change it to the 1st partition you created (eg: nvme0n1p1)-- 
-
-[ext4 partition -2nd partition]
-[1st partition as fat32 ] >>  mkfs.ext4 /dev/nvme0n1p2 #--change it to the 2nd partition you created (eg: nvme0n1p2)-- 
-              
-[Encrypting the 3rd partition]
->> cryptsetup luksFormat /dev/sda3 #---change it according to your 3rd partition (eg : nvme0n1p3)
-  [cryptsetup] overrite data on /dev/nvme0n1p3 : YES
-  [cryptsetup] Enter passphrase : ENTER_A_PASSWORD
-
-[open partition 3 and format partition 3]
-cryptsetup open --type luks /dev/sda3 lvm #--change sda3 according to your 3rd partition) #change lvm to any name
-
-
-[create a physical volume ]
-pvcreate /dev/mapper/lvm             #---change lvm to the name we gave at cryptsetup open
-
-[create a volume group]
-vgcreate volgroup0 /dev/mapper/lvm   #---change lvm to the name we gave at cryptsetup open
-
-[create a logical volume]
->> lvcreate -L 30GB volgroup0 -n lv_root (for root partition) 
->> lvcreate -L 250GB volgroup0 -n lv_home (for home partition) #replace 250GB with what you have remaining space
-
-[display volume groups]
->> vgdisplay
-
-[display logical volumes]
->> lvdisplay
-
-https://youtu.be/FxeriGuJKTM?t=2313
+      
