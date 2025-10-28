@@ -300,5 +300,19 @@ eg:- gdisk /dev/sda
           --------------------------------------
           >> grub-install --efi-directory=/boot/efi
 
-          https://youtu.be/YC7NMbl4goo?t=826
-          
+          [note the UUID of sda3]
+          -----------------------
+          >> blkid /dev/sda3
+          [copy the UUID eg:- UUID="6963811-e8776"]
+
+          [set kernal parameters into boot configuration]
+          -----------------------------------------------
+          >> nano /etc/default/grub
+
+          [find] (GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet")
+          [replace it with] :: GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet root=/dev/mapper/arch-root 
+                              cryptdevice=COPIED_UUID:luks_lvm"
+          eg:- GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet root=/dev/mapper/arch-root cryptdevice=6938f264-e299-43e0-a58b-01fd0496fd03:luks_lvm"
+
+
+          https://youtu.be/YC7NMbl4goo?t=873
