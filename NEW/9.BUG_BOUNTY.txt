@@ -1,0 +1,15 @@
+BROKE ACCESS CONTROL
+---------------------
+Accessing or modifying informations beyond limit
+  sub categories
+  --------------
+  Path traversal                             : manipulating path to access files/folders not intended for a user
+  IDOR(Insecure Direct Object Reference)     : accessing files not intended for a user
+  Horizontal access control bypass           : a user accessing/modifying another user's data of same same
+  Vertical access control bypass             : a low priviliaged user accessing/modifying a high priviliaged user's data 
+  context dependent access control failure   : a user perform actions out of allowed context/state/role/resource
+
+
+  VERTICAL ACCESS CONTROL
+  ------------------------
+  https://portswigger.net/web-security/access-control/lab-user-role-controlled-by-request-parameter
