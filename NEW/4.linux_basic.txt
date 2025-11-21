@@ -1,58 +1,21 @@
-LINUX
------
-CLI - Command Line Interface
-GUI - Graphical User Interface
-shell - interprets the command we type and execute them
-REPL - primary function of shell,  REPLE cycles :  R'ead command -- E'valuate and execute command -- P'rints the result -- L'oops to the first step : R-E-P-L
-
-A.COMMANDS
-------------
-
-1.ECHO
--------
-echo "message" : prints the provided message
-eg:- >> echo "hello world"
-     >> [result] hello world
-
-2. EXPR
---------
-expr "expression" : Print the value of EXPRESSION to standard output
-eg:- >> expr 5 + 6
-     >> [result] 11
-
-3. VARIABLE
-------------
-variable_name="value" : stores a value into a variable
-eg:-  >> my_ip=192.168.29.150
-      >> echo $my_ip
-      >> [result] 192.168.29.151
-
-4. EXPORT
+FILESYSTEM
 ----------
-export variable_name="value" : stores a value to variable (but this can be accessed by bash scripts)
-eg:- >> export my_var="192.168.29.151"
-     >> [bash program which prints my_var] result : 192.168.29.151
+/ - root file (contains /home , /etc , /var , /tmp , /boot , /bin subfolders)
 
-      <if it was variable_bane="value">
-      >> my_var="192.168.29.151"
-      >> [bash program which prints my_var] result : 
-
-5. HISTORY
------------
-history : view history of commands we typed
-eg:- >> history
-     >> [result] ls
-                 pwd
-                 ifconfig
-
-     <clear history>
-      >> history -c
-
-     <claer history and overrite (hard to recover)>
-      >> history -cw
-
-B. FILESYSTEM
---------------
-https://youtu.be/v392lEyM29A?t=1252
+/home - contains the personal home directories for regular ,non-root users
+/etc  - contains system-wide configuration files for nearly all programs and services
+/var  - Contains variable data. This data changes frequently during system operation
+/tmp  - Contains temporary files. Files in /tmp are often deleted on system reboot
+/boot - Contains essential files for system boot-up, including the Linux kernel
+/bin  - Contains essential command binaries for all users (including root) to operate the system, like ls, cat, and mv
 
 
+COMMANDS
+--------
+
+df                : shows total/used/free/location of each drive
+free              : shows the free RAM memmory (physical) and swap memmory 
+date              : shows date and time 
+touch [filename]  : creates a file with filename provided
+
+https://youtu.be/16d2lHc0Pe8?t=454
