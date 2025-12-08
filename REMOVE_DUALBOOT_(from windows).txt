@@ -1,0 +1,25 @@
+OS Example : Ubuntu
+1. Removing Ubuntu from Disk Management
+---------------------------------------
+remove the drive assigned for os in DISK MANAGEMENT (DISK MANAGEMENT > Delete Volume)
+
+2. Delete OS from Boot configuration Data
+-----------------------------------------
+command prompt (run as administrator)
+(locate ubuntu identifier) >> bcdedit /enum firmware (copy the ubuntu identifier (eg: {c818579a-d2a0-11f0-943d-806e6f6e6963})
+(delete it) >> bcdedit /delete {c818579a-d2a0-11f0-943d-806e6f6e6963}        
+
+3. Delete ubuntu From EFI partition
+------------------------------------
+>> diskpart
+>> list disk
+>> select disk [disk number (disk of os)] (eg:- select disk 1)
+>> list vol
+>> select volume [ volume number ] (the one which is labelled system size :100-200MB) eg: select volume 7
+>> assign LETTER=[letter that is not assigned already] ; eg:- assign LETTER=V
+>> exit
+>> V: (cd to the drive assigned ) eg: V:  
+>> cd efi
+>> rmdir /s ubuntu (this will delete ubuntu completely)
+
+
