@@ -86,3 +86,7 @@ VARIABLES
         const SECONDS_IN_MINUTE:u32 = 60; //data type is compulsory
         println!("seconds in 1 minute : {}",SECONDS_IN_MINUTE); //output: seconds in 1 minute : 60
     }
+
+
+next : https://youtu.be/t047Hseyj_k?si=0uDk46OtxsR4aVhI
+playlist : https://www.youtube.com/playlist?list=PLzMcBGfZo4-nyLTlSRBvo0zjSnCnqjHYQ
