@@ -19,6 +19,11 @@ Run :
 ./main
 
 
+COMPRESS AND COMPILED FILE (Without Cargo)
+-------------------------------------------
+>> rustc main.rs -C opt-level=z -C lto -C codegen-units=1 -C strip=debuginfo -o myOutput
+>> strip myOutpput
+
 HELLO WORLD
 -----------
   fn main(){
