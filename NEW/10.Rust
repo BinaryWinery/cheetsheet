@@ -24,6 +24,32 @@ COMPRESS AND COMPILED FILE (Without Cargo)
 >> rustc main.rs -C opt-level=z -C lto -C codegen-units=1 -C strip=debuginfo -o myOutput
 >> strip myOutpput
 
+
+RUST TOOLS (Cargo and Fmt)
+--------------------------
+cargo - initialize project, track dependencies ...etc
+rust Fmt - automatically format Rust code
+
+  Initialize a project with cargo
+  -------------------------------
+  >> cargo new [project name] eg: cargo new myProject1
+
+  Build a program (compile) with cargo
+  ------------------------------------
+  >> cargo build 
+
+  Compile and Run (Automatically) with cargo
+  -------------------------------------------
+  >> cargo run
+
+  Cargo check for errors
+  -----------------------
+  >> cargo check
+
+  Format Rust code with rustfmt
+  -----------------------------
+  >> rustfmt ./src/main.rs
+
 HELLO WORLD
 -----------
   fn main(){
