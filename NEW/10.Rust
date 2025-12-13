@@ -50,8 +50,39 @@ rust Fmt - automatically format Rust code
   -----------------------------
   >> rustfmt ./src/main.rs
 
+
+
 HELLO WORLD
 -----------
   fn main(){
       println!("Hello world");
   }
+
+
+VARIABLES
+-----------
+      fn main(){
+        let x = 5; //immutable variable (value cannot be changed) immutable by default
+        println!("the value of x is {}",x); //output : the value of x is 5
+        
+        let mut y = 10; //mutable value (value can be changed)
+        println!("the value of y is {}",y); //output : the value of y is 10
+        y = 200; //changing value of immutable variable y
+        println!("the new value of y is {}",y); //output : the new value of y is 200
+    
+    
+        //shadowing
+        let g =20;
+    
+        //interior scope : whatever variables assigned inside this scope wont affect the variable outside this
+        {
+            let g = 29; //value only changes for this scope
+            println!("value of g is {}",g); //output : value of g is 29
+        }
+    
+        println!("the value of g is {}",g);//output : the value of g is 20
+    
+        //constant value (cannot reassign, cannot redefine)
+        const SECONDS_IN_MINUTE:u32 = 60; //data type is compulsory
+        println!("seconds in 1 minute : {}",SECONDS_IN_MINUTE); //output: seconds in 1 minute : 60
+    }
