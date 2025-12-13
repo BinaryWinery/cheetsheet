@@ -1,1 +1,26 @@
 
+INSTALL RUST (LINUX/MAC)
+-------------------------
+>> curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+EXTENSION
+----------
+.rs
+
+COMPILE AND RUN PROGRAM (Without Cargo)
+----------------------------
+compile :
+
+rustrc [filename]
+eg:- rustc main.rs
+
+Run :
+
+./main
+
+
+HELLO WORLD
+-----------
+  fn main(){
+      println!("Hello world");
+  }
