@@ -88,5 +88,62 @@ VARIABLES
     }
 
 
-next : https://youtu.be/t047Hseyj_k?si=0uDk46OtxsR4aVhI
+DATATYPES - Primitive-
+-----------------------
+Scalar data type  : eg: int,char,boolean (single values)
+compound data type : eg:- array,tuple (multiple values)
+
+Scalar
+------
+    Integer
+    -------
+    let x:i32 = -120 (i = signed integer(can have -ve and +ve numbers) 32 = 32 bit (-2,147,483,648$ to 2,147,483,647))
+    let y:u32 = 888999 (u = unsigned integer (can only have +ve numbers) 32 = 32 bit(0 to 134,294,967,295))
+
+    type               Range
+    ------------------------------------
+    u8          :    0 -> 255
+    u16         :    0 -> 65,535
+    u32         :    0 -> 4,294,967,295
+    u64         :    0 -> 18,446,744,073,709,551,615
+
+    i8          :   -128 -> 127 
+    i16         :   -32,768 -> 32,767
+    i32         :   -2,147,483,648 -> 2,147,483,647
+    i64         :   -9,223,372,036,854,775,808 -> 9,223,372,036,854,775,807
+
+
+  Floating-points (Decimals)
+  --------------------------
+  let x:f32 = 20.89 (can be positive and negative)
+
+  type               Range
+  ------------------------------------
+  f32          :    7 decimal digits (single precision)
+  f64          :    15 decimal digits (double precision)  --default for rust--
+
+
+
+  Boolean
+  -------
+  let verified:bool = false;
+  let is_alive:bool = true;
+  let is_true:bool = 1; //same as true
+  let is_false:bool = 0; //same as false
+
+
+
+  Char
+  ----
+  let a_charector:char = 'x'; (single quotes)
+
+Compound
+---------
+    Tuple (immutable and fixed length)
+    ----------------------------------
+  
+
+
+
+https://youtu.be/t047Hseyj_k?list=PLzMcBGfZo4-nyLTlSRBvo0zjSnCnqjHYQ
 playlist : https://www.youtube.com/playlist?list=PLzMcBGfZo4-nyLTlSRBvo0zjSnCnqjHYQ
