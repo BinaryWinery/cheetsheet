@@ -1,4 +1,4 @@
-
+nce
 INSTALL RUST (LINUX/MAC)
 -------------------------
 >> curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
@@ -139,11 +139,36 @@ Scalar
 
 Compound
 ---------
-    Tuple (immutable and fixed length)
-    ----------------------------------
-  
+    Tuple (sequence of elements - immutable (by default) and fixed length)
+    -----------------------------------------------------------
+    let tuple1 = (1,'x',false,2.1); //immutable tuple
+    println!("{}",tuple1.2); //accessing the element of tuple by  index number
+
+    let mut tuple2 = (8,'c',true,3.141); //mutable tuple with datatypes and size specified
+    tuple2.1 = 'g'; //modifying the element (only with same data type)
+    println!("{}",tuple2.1); //accessing the element of tuple by  index number
 
 
+    Array (sequence of elements - same datatype, immutable (by default) and fixed length)
+    --------------------------------------------------------------------------------------
+    let array1 = [1,2,3,4,5];
+    println!("{}",array1[2]); //access element in array
+
+    let mut array2:[i8;5] = [2,4,6,8,0]; //mutable array with datatype and size specified
+    array2[1] = 7; //modifying the element
+    println!("{}",array2[1]); //access element in array
+
+
+    Vector (sequence of elements - same datatype, immutable (by default)
+    --------------------------------------------------------------------
+    let mut colors = vec!["green","pink","red","blue"]; //immutable vector
+    colors[0]="orange"; //modify element
+    colors.push(21); //add new element
+    colors.remove(0); //remove element by index number
+    colors.pop(); //remove the last element 
+    
+    println!("{}",colors[0]); //access elements of vector
+    println!("length of vecror : {}",colors.len()); //get the size of vector
 
 https://youtu.be/t047Hseyj_k?list=PLzMcBGfZo4-nyLTlSRBvo0zjSnCnqjHYQ
 playlist : https://www.youtube.com/playlist?list=PLzMcBGfZo4-nyLTlSRBvo0zjSnCnqjHYQ
