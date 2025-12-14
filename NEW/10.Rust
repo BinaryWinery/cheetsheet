@@ -206,5 +206,24 @@ INPUT
   
   }
 
+
+ARITHMETIC OPERATORS (With different data types)
+------------------------------------------------
+fn main(){
+    let num1:i32 = 28;
+    let num2:f32 = 44.98;
+
+    let sum:f32 = num1 as f32 + num2; //converting num1 to f32
+    let substraction:i32 = num1 - num2 as i32; //converting num2 to i32
+    let multiplication:f32 = num1 as f32 * num2; //converting num1 to f32
+    let division:f64 = num1 as f64 / num2 as f64; //converting num2 and num1 to f64
+
+    println!("sum : {}",sum);
+    println!("substraction : {}",substraction);
+    println!("multiplication : {}",multiplication);
+    println!("division : {}",division);
+}
+
+
 https://youtu.be/Uwa3P9dBHdA?list=PLzMcBGfZo4-nyLTlSRBvo0zjSnCnqjHYQ
 playlist : https://www.youtube.com/playlist?list=PLzMcBGfZo4-nyLTlSRBvo0zjSnCnqjHYQ
