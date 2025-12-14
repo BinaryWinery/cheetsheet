@@ -170,5 +170,41 @@ Compound
     println!("{}",colors[0]); //access elements of vector
     println!("length of vecror : {}",colors.len()); //get the size of vector
 
+INPUT
+------
+
+    //collect input String
+    -----------------------
+
+    use std::io;
+    
+    fn main(){
+        println!("Enter your name"); //label for input
+        let mut name = String::new();
+        io::stdin().read_line(&mut name).expect("Error while collecting Input"); //collect input into variable 'name' as string
+        println!("Hello {}",name);
+    }
+
+
+  //collect input Integer
+ -------------------------
+
+  use std::io;
+
+  fn main(){
+      println!("Enter a number : ");
+      let mut num1 = String::new();
+      io::stdin().read_line(&mut num1).expect("Error while collecting number 1");
+      let num1_convert_to_int:i32 = num1.trim().parse().expect("Failed to parse num1 to integer"); //convert string to integer
+  
+      println!("Enter another number : ");
+      let mut num2 = String::new();
+      io::stdin().read_line(&mut num2).expect("Error while collecting number 2");
+      let num2_convert_to_int:i32 = num2.trim().parse().expect("Failed to parse num2 to Integer"); //convert string to integer
+  
+      println!("\n\nthe sum of {} and {} is {}",num1,num2,num1_convert_to_int+num2_convert_to_int);
+  
+  }
+
 https://youtu.be/t047Hseyj_k?list=PLzMcBGfZo4-nyLTlSRBvo0zjSnCnqjHYQ&t=1028
 playlist : https://www.youtube.com/playlist?list=PLzMcBGfZo4-nyLTlSRBvo0zjSnCnqjHYQ
