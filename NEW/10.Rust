@@ -224,6 +224,108 @@ fn main(){
     println!("division : {}",division);
 }
 
+CONDITION,COMPOUND CONDITION AND CONTROL FLOW
+---------------------------------------------
+condition : true or false
+compound condition : && and || 
+control flow : if ,else if and else
+conditional operators : >,<,>=,<=,==,!=
 
-https://youtu.be/MOa7ulhNYc0?list=PLzMcBGfZo4-nyLTlSRBvo0zjSnCnqjHYQ
+use std::io;
+
+fn main(){
+    println!("Enter a number : "); //input label
+    let mut number = String::new(); //input storing variable
+    io::stdin().read_line(&mut number).expect("Unable to read number"); //make an input
+    let string_to_number:i32 = number.trim().parse().expect("Unable to parse to number"); //convert string to number
+
+    //check number is positive or negative with if else
+    if string_to_number>0 {
+        println!("The number is positive");
+    }else if string_to_number<0 {
+        println!("The number is negative")
+    }
+    else{
+        println!("The number is zero");
+    }
+}
+
+FUNCTIONS
+---------
+
+simple function
+---------------
+    fn show_message(){
+        println!("Hello world");
+    }
+    
+    fn main(){
+        show_message();
+    }
+
+function with parameters
+------------------------
+     //with integer
+
+    fn find_sum(num1:i32,num2:i32){
+        println!("sum is : {}",num1+num2);
+    }
+    
+    fn main(){
+        find_sum(6,8);
+    }
+
+    //with string (str)
+
+    fn greet(name:&str){
+        println!("Hello {}",name);
+    }
+    
+    fn main(){
+        greet("John");
+    }
+
+function with return
+--------------------
+    fn add_numbers(num1:i32,num2:i32)->i32{ //specify the return type
+        num1+num2 //returns the result
+    }
+    
+    fn main(){
+        println!("{}",add_numbers(2,4));
+    }
+
+or
+
+    fn add_numbers(num1:i32,num2:i32)->i32{ //specify the return type
+        return num1+num2; //returns the result
+    }
+    
+    fn main(){
+        println!("{}",add_numbers(2,4));
+    }
+
+TERENARY OPERATOR
+------------------
+
+fn main(){
+    let word = "color";
+
+    let result = {
+        if word == "fruit"{
+            "my favourite fruit is apple"  //dont use ; for returning value
+        }
+        else if word == "color"{
+            "my favourite color is green"  //dont use ; for returning value
+        }
+        else {
+            "no value"  //dont use ; for returning value
+        }
+    };
+
+    println!("{}",result);
+}
+
+
+https://youtu.be/APrANyLHCtQ?list=PLzMcBGfZo4-nyLTlSRBvo0zjSnCnqjHYQ
 playlist : https://www.youtube.com/playlist?list=PLzMcBGfZo4-nyLTlSRBvo0zjSnCnqjHYQ
