@@ -1,0 +1,30 @@
+Check version
+-------------
+>> go version
+
+Extension
+---------
+ filename.go
+
+Comments
+--------
+// - single line comment
+
+/*
+       - multi line comment
+*/
+
+
+ Hello World
+ ------------
+ 
+    package main
+    
+    import "fmt"
+    
+    func main() {
+    	fmt.Println("Hello world")
+    }
+
+
+(result) >> Hello world
