@@ -1,0 +1,14 @@
+NEW AP (Accesspoint)
+---------------------
+    >> sudo nmcli device wifi hotspot ssid [SSID] password [PASSWORD] ifname [INTERFACE]
+    >> sudo nmcli device wifi hotspot ssid rasp password 12345678 ifname wlan0
+
+    >> nmcli connection show
+    
+    //autoconnect
+    >> sudo nmcli connection modify [NAME] connection.autoconnect yes
+    >> sudo nmcli connection modify Hotspot connection.autoconnect yes
+
+    //set priority 100
+    >> sudo nmcli connection modify [NAME] connection.autoconnect-priority 100
+    >> sudo nmcli connection modify Hotspot connection.autoconnect-priority 100
